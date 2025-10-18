@@ -6,7 +6,7 @@
     <title>Login - Community Resource Hub</title>
     <link rel="stylesheet" href="styles.css">
     <style>
-        /* Improve contrast for the login page when background is light */
+    /* Make login page clearer on light backgrounds */
         body {
             background-color: #f5f8fa;
             color: #1a2942;
@@ -27,7 +27,7 @@
             border: 1px solid #d7e2ef !important;
         }
     #loginMessage { color: #1e7bbf !important; }
-    /* loginError visual handled by styles.css (alert-error) to keep brand-consistent tones */
+    /* loginError handled by styles.css */
     </style>
 </head>
 <body>
@@ -111,13 +111,13 @@
         </div>
     </footer>
     <script>
-    // Autofill when clicking the test account box
+    // Autofill test credentials
     document.getElementById('testAccountBox').addEventListener('click', function() {
         document.getElementById('username').value = 'shstsa@gmail.com';
         document.getElementById('password').value = 'Tsa2025';
     });
 
-    // Only accept the pre-made account
+    // Demo login: check the demo account
     document.getElementById('loginForm').onsubmit = function(e) {
         e.preventDefault();
         var email = document.getElementById('username').value.trim();
@@ -143,7 +143,7 @@
     </script>
 
     <script>
-    // enhance nav: set active link based on current path and add ARIA role
+    // Nav: set active link and ARIA
     (function(){
         try{
             var nav = document.querySelector('.nav-links');

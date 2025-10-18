@@ -1,18 +1,15 @@
-/* Common Styles */
+/* common */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Global font stack: prefer Inter/system UI, fall back to common sans-serif fonts.
-   Inter is referenced but not bundled here; if you want a hosted font, we can add
-   a webfont import (Google Fonts or self-hosted). */
+/* fonts */
 html, body {
     font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
     background-color: var(--bg-muted);
-    /* leave space for the fixed header so page content isn't hidden */
-    padding-top: 84px;
+    /* header offset is now opt-in via body.has-header-gap to avoid unwanted empty space */
     color: var(--text);
 }
 
@@ -23,7 +20,7 @@ html, body {
 }
 
 .header {
-    position: fixed; /* keep header visible while scrolling */
+    position: fixed; /* fixed */
     top: 0;
     left: 0;
     width: 100%;
@@ -32,9 +29,9 @@ html, body {
     justify-content: space-between;
     align-items: center;
     z-index: 1000;
-    /* translucent brand-blue so page content shows beneath slightly */
+    /* bg */
     background: rgba(37,74,110,0.72);
-    /* glassy blur for modern clear-look (will be ignored in browsers without support) */
+    /* backdrop blur */
     -webkit-backdrop-filter: blur(6px);
     backdrop-filter: blur(6px);
     border-bottom: 1px solid rgba(255,255,255,0.06);
@@ -78,14 +75,14 @@ html, body {
     border-bottom: 2px solid #b4c5e4;
 }
 
-/* keyboard focus styles for nav links */
+/* focus */
 .nav-links a:focus-visible {
     outline: 3px solid rgba(180,197,228,0.25);
     outline-offset: 4px;
     border-radius: 4px;
 }
 
-/* subtle hover/active micro-interaction */
+/* hover */
 .nav-links a { transition: color 200ms ease, transform 140ms ease; }
 .nav-links a:hover { transform: translateY(-2px); }
 
@@ -105,15 +102,15 @@ html, body {
     height: 100%;
 }
 
-/* Ensure page hero sections (page-hero) behave like hero-main: contain overlays */
+/* hero */
 .page-hero {
     position: relative;
     overflow: hidden;
 }
 
-/* Large hero image under header — uses a gray placeholder by default. */
+/* hero image */
 .page-hero {
-    min-height: 520px; /* make the hero large like the example */
+    min-height: 520px; /* hero size */
 }
 
 .page-hero .hero-background {
@@ -121,7 +118,7 @@ html, body {
     height: 100%;
     background-image: url('https://via.placeholder.com/2000x900/cccccc/ffffff');
     background-size: cover;
-    background-position: right center; /* crop to the right like the attachment */
+    background-position: right center; /* position */
     background-repeat: no-repeat;
 }
 
@@ -138,27 +135,27 @@ html, body {
     left: 0;
     width: 100%;
     height: 100%;
-    /* Soft white-blue veil so the background image is visible but tinted to the brand */
+    /* overlay */
     background: linear-gradient(180deg, rgba(255,255,255,0.72), rgba(234,244,255,0.55));
-    z-index: 0; /* keep it behind hero content */
-    pointer-events: none; /* allow clicks to pass through */
+    z-index: 0; /* behind */
+    pointer-events: none; /* clicks through */
 }
 
-/* Ensure hero-background occupies a visible height so centered content has space to sit over it */
+/* hero height */
 .page-hero { min-height: 420px; position: relative; }
 .page-hero .hero-background .placeholder-img { width:100%; height:100%; display:block; }
 
 .page-hero .hero-content {
-    /* place hero content centered over the hero-background/placeholder image */
+    /* hero center */
     position: absolute;
-    inset: 0; /* top:0; right:0; bottom:0; left:0 */
-    z-index: 2; /* above the overlay */
+    inset: 0; /* inset */
+    z-index: 2; /* above */
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 2rem 1rem; /* ensure some breathing room on mobile */
+    padding: 2rem 1rem; /* padding */
 }
 
 .slider-container {
@@ -792,12 +789,18 @@ a:hover { color: var(--text-strong); }
 
 /* Utility: only add extra top spacing on wide screens when a page requires it
    (useful for pages that want to visually clear a fixed header on desktop).
-   On small screens this class will not add spacing to avoid pushing content off-screen. */
+   On small screens this class will not add spacing to avoid pushing content off-screen.
+   We also provide a body-level opt-in (`body.has-header-gap`) that applies the
+   same visual offset by adding padding to the top of the document on wide screens.
+*/
 @media (min-width: 900px) {
     .has-header-gap { margin-top: 6rem; }
+    /* opt-in document-level offset for pages that need the fixed header space */
+    body.has-header-gap { padding-top: 84px; }
 }
 @media (max-width: 900px) {
     .has-header-gap { margin-top: 0 !important; }
+    body.has-header-gap { padding-top: 0 !important; }
 }
 
 /* Values photo slider (rectangular) */

@@ -1,11 +1,11 @@
-// scripts.js — shared site scripts
-// Scroll reveal using IntersectionObserver. Adds 'in-view' to elements with class 'reveal' when they intersect.
+// Shared site scripts
+// Scroll reveal: add 'in-view' to elements with .reveal when visible
 (function(){
     'use strict';
-    // Respect reduced motion
+    // Respect reduced motion preference
     var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if(reduce) {
-        // Immediately reveal everything
+        // reveal everything immediately
         document.addEventListener('DOMContentLoaded', function(){
             document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in-view'); });
         });
@@ -19,7 +19,7 @@
                 var delay = el.getAttribute('data-reveal-delay');
                 if(delay){ el.style.transitionDelay = delay + 'ms'; }
                 el.classList.add('in-view');
-                // if the element contains children with .reveal-child, stagger them
+                // stagger .reveal-child elements if present
                 var children = el.querySelectorAll && el.querySelectorAll('.reveal-child');
                 if(children && children.length){
                     children.forEach(function(child, i){
@@ -27,7 +27,7 @@
                         child.classList.add('in-view');
                     });
                 }
-                // unobserve after reveal to avoid repeated work
+                // stop observing once revealed
                 obs.unobserve(el);
             }
         });

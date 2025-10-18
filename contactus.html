@@ -16,7 +16,7 @@
             background-color: #f5f8fa;
         }
 
-        /* Page-specific styles continue below (hero, layout, form, etc.) */
+    /* Page styles: hero, layout, form */
 
         .hero {
             text-align: center;
@@ -110,7 +110,7 @@
             flex-wrap: wrap;
         }
 
-        /* make the contact-info span the full grid columns so it can use the full width */
+    /* let contact-info use full width */
         .container > .contact-info { grid-column: 1 / -1; }
 
         .info-card {
@@ -118,18 +118,18 @@
             padding: 1.5rem;
             border-radius: 10px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            /* card sizing: on wide screens we'll make three equal columns; on small screens they can wrap */
+            /* 3-column cards on desktop, stacked on mobile */
             flex: 1 1 0%;
             min-width: 180px;
             max-width: none;
         }
 
-        /* Desktop: force a single centered row of three equal cards */
+    /* Desktop: three equal cards */
         @media (min-width: 900px) {
             .contact-info { flex-wrap: nowrap; }
             .info-card { flex: 0 1 calc((100% - 48px) / 3); }
         }
-        /* Mobile: stack cards */
+    /* Mobile: stack cards */
         @media (max-width: 899px) {
             .info-card { flex: 1 1 100%; }
         }
@@ -159,11 +159,10 @@
             margin-top: 1rem;
         }
 
-        /* Using global styles from styles.css for testimonials (animation, layout, pause-on-hover). */
+    /* Testimonials use global styles */
     </style>
     <style>
-        /* Page-local mobile overrides to ensure contact page stacks and doesn't overflow.
-           These override the earlier inline rules when the viewport is narrow. */
+    /* Mobile overrides to prevent overflow */
         @media (max-width: 900px) {
             .container { display: block !important; grid-template-columns: none !important; padding-left: 0.75rem !important; padding-right: 0.75rem !important; }
             .container > .contact-form, .container > .newsletter, .container > .contact-info { width: 100% !important; box-sizing: border-box; }
@@ -176,7 +175,7 @@
         }
     </style>
     <style>
-        /* Very small-screen tweaks to improve visual density and readability */
+    /* Extra small-screen tweaks */
         @media (max-width: 520px) {
             body.contact-page .hero { padding: 1.25rem 0.75rem !important; }
             body.contact-page .hero h1 { font-size: 1.6rem !important; line-height: 1.2 !important; margin-bottom: .5rem !important; }
@@ -193,10 +192,10 @@
             .contact-info { gap: 10px !important; }
             .info-card { padding: .85rem !important; font-size: .95rem !important; }
 
-            /* Make buttons less wide visually and easier to tap */
+            /* Smaller buttons for touch */
             .submit-btn, .cta-button { padding: .65rem 1rem !important; font-size: .95rem !important; }
 
-            /* Reduce hero decorative shapes footprint */
+            /* Hide decorative shapes on small screens */
             .decorative-shapes { display: none !important; }
         }
     </style>

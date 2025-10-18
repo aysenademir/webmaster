@@ -140,7 +140,7 @@
         </div>
     </footer>
     <script>
-    // enhance nav: set active link based on current path and add ARIA role
+    // nav
     (function(){
         try{
             var nav = document.querySelector('.nav-links');
@@ -155,7 +155,7 @@
     })();
     </script>
     <script>
-    // Require demo login via localStorage before submitting. If not logged in, redirect to login page.
+    // require login
     (function(){
         try {
             var loggedIn = localStorage.getItem('crh_logged_in') === 'true';
@@ -209,7 +209,7 @@
     })();
     </script>
     <script>
-    // mobile nav toggle
+    // nav toggle
     (function(){
         var btn = document.querySelector('.nav-toggle');
         var nav = document.querySelector('.nav-links');

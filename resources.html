@@ -6,7 +6,7 @@
     <title>Resource Directory - Community Resource Hub</title>
     <link rel="stylesheet" href="styles.css">
     <style>
-        /* Only keep the toggle button styling inline; rest lives in styles.css */
+    /* Toggle button only; rest in styles.css */
         .filters-toggle {
             display: inline-flex;
             align-items: center;
@@ -57,7 +57,7 @@
     <section class="resource-directory">
         <div class="container">
             <aside class="directory-filters collapsed" id="directoryFilters" aria-hidden="true">
-                <!-- Mobile handle (desktop will ignore/hide if not needed) -->
+                    <!-- Mobile handle -->
                 <button class="filters-handle reveal" id="filtersToggle" aria-expanded="false" aria-controls="directoryFilters" data-reveal-delay="90">Filters</button>
                 <div class="filters-inner">
                     <div class="filter-block" id="searchBlock">
@@ -91,13 +91,13 @@
             </aside>
 
             <div class="resources-grid">
-                <!-- no-match banner inserted via JS when a query yields no exact matches -->
+                    <!-- Banner shown if no exact match -->
                 <div id="noMatchBanner" class="no-match-banner" style="display:none;">
                     <strong>No exact match found.</strong>
                     <p>We don't have an exact resource matching your search term — try browsing the directory below or refine your search.</p>
                 </div>
-                <!-- 15 placeholder resources (Resource 1..15) -->
-                <!-- Categories rotate: health, education, housing, food, employment -->
+                <!-- Placeholder resources -->
+                <!-- Categories: health, education, housing, food, employment -->
                 <div class="resource-card reveal" data-reveal-delay="60" data-category="health" data-location="north">
                     <div class="placeholder-img-square"></div>
                     <div class="resource-content"><h3>Resource 1</h3><p></p><div class="resource-tags"><span class="tag">Healthcare</span></div><a href="#" class="resource-link">Learn More →</a></div>
@@ -164,7 +164,7 @@
 
     <script>
     (function(){
-        // Nav enhancement
+        // Nav: set active link and add ARIA role
         try{
             var nav = document.querySelector('.nav-links');
             if(nav){ nav.setAttribute('role','navigation'); nav.setAttribute('aria-label','Main'); }
@@ -176,7 +176,7 @@
             });
         }catch(e){ console.warn('nav init failed', e); }
 
-        // Combined filtering: search text + category + location
+    // Filters: search + category + location
         try{
             var input = document.getElementById('searchInput');
             var cards = Array.from(document.querySelectorAll('.resource-card'));
