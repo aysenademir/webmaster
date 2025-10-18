@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Community Resource Hub</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Improve contrast for the login page when background is light */
+        body {
+            background-color: #f5f8fa;
+            color: #1a2942;
+        }
+        .login-left h1, .login-left p {
+            color: #1a2942 !important;
+        }
+        .test-account {
+            border-color: #1e3d59 !important;
+            background: rgba(30,61,89,0.03) !important;
+            color: #1a2942 !important;
+        }
+        .test-account h3, .test-account p, .test-account strong { color: #1e3d59 !important; }
+        .login-right { background: #ffffff !important; }
+        #loginForm input {
+            color: var(--text) !important;
+            background: #ffffff !important;
+            border: 1px solid #d7e2ef !important;
+        }
+    #loginMessage { color: #1e7bbf !important; }
+    /* loginError visual handled by styles.css (alert-error) to keep brand-consistent tones */
+    </style>
+</head>
+<body>
+    <header class="header">
+        <a href="index.html" class="logo">Community Resource Hub</a>
+        <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false"><span class="bar"></span><span class="bar"></span><span class="bar"></span></button>
+        <nav class="nav-links">
+            <a href="./index.html">Home</a>
+            <a href="./story.html">Our Story</a>
+            <a href="./mission.html">Our Mission</a>
+            <a href="./resources.html">Resource Directory</a>
+            <a href="./events.html">Events</a>
+            <a href="./submit.html">Submit Resource</a>
+            <a href="./contactus.html">Contact</a>
+            <a href="./login.html">Login</a>
+        </nav>
+    </header>
+
+    <section class="container has-header-gap">
+        <div class="login-grid" style="display:grid;grid-template-columns:1fr 420px;gap:3rem;align-items:start;">
+            <div class="login-left">
+                    <h1 style="font-size:3.5rem;margin-bottom:1rem;color:var(--brand-blue);">Community Resource Hub</h1>
+                    <p style="font-size:1.15rem;color:var(--text-soft);max-width:650px;line-height:1.6;">Sign in to access the resource submission workflow. Use the test account box to autofill the one allowed account for this demo site.</p>
+
+                    <div class="test-account" id="testAccountBox" style="margin-top:2rem;padding:1.5rem;border-radius:8px;border:2px solid #b4c5e4;background:rgba(180,197,228,0.03);cursor:pointer;">
+                        <h3 style="margin-bottom:0.5rem;color:var(--brand-blue);">TEST ACCOUNT</h3>
+                        <p style="color:var(--text-soft);margin-bottom:0.5rem;">Click this box to auto-fill credentials for the demo login:</p>
+                        <p style="color:var(--text-soft);margin:0.25rem 0;">Email: <strong style="color:var(--brand-blue);">shstsa@gmail.com</strong></p>
+                        <p style="color:var(--text-soft);margin:0.25rem 0 0 0;">Password: <strong style="color:var(--brand-blue);">Tsa2025</strong></p>
+                    </div>
+                </div>
+
+            <div class="login-right" style="background:#ffffff;padding:2rem;border-radius:10px;">
+                <h2 style="margin-bottom:1rem;color:var(--text-strong);">Sign in</h2>
+                <form id="loginForm">
+                    <div class="form-group" style="margin-bottom:1rem;">
+                        <label for="username" style="display:block;color:#1a2942;margin-bottom:0.5rem;">Email</label>
+                        <input type="email" id="username" name="username" required placeholder="shstsa@gmail.com" style="width:100%;padding:1rem;border-radius:12px;border:none;background:#f4fff5;" />
+                    </div>
+                    <div class="form-group" style="margin-bottom:1.25rem;">
+                        <label for="password" style="display:block;color:#1a2942;margin-bottom:0.5rem;">Password</label>
+                        <input type="password" id="password" name="password" required placeholder="Tsa2025" style="width:100%;padding:1rem;border-radius:12px;border:none;background:#f4fff5;" />
+                    </div>
+
+                    <div style="display:flex;gap:1rem;align-items:center;">
+                        <button type="submit" class="cta-button" style="background:#1e3d59;color:#fff;padding:1rem 2rem;border-radius:12px;border:none;">Login</button>
+                    </div>
+                </form>
+
+                <div id="loginMessage" style="display:none;margin-top:1.5rem;color:#1e3d59;">
+                    <h3>Login Successful</h3>
+                    <p>Welcome back!</p>
+                </div>
+                <div id="loginError" role="alert" aria-live="assertive" style="display:none;margin-top:1.5rem;" class="alert alert-error">
+                    <strong style="display:block;margin-bottom:0.25rem;">Login Failed</strong>
+                    <span>Incorrect email or password. Please try again.</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div>
+                <h3>Community Resource Hub</h3>
+                <p>Connecting our community with essential resources</p>
+            </div>
+            <div>
+                <h4>Navigation</h4>
+                <p><a href="index.html">Home</a></p>
+                <p><a href="about.html">About</a></p>
+                <p><a href="services.html">Services</a></p>
+                <p><a href="contactus.html">Contact</a></p>
+            </div>
+            <div>
+                <h4>Contact Info</h4>
+                <p>123 Community Street</p>
+                <p>Local City, ST 12345</p>
+                <p>contact@resourcehub.org</p>
+            </div>
+        </div>
+    </footer>
+    <script>
+    // Autofill when clicking the test account box
+    document.getElementById('testAccountBox').addEventListener('click', function() {
+        document.getElementById('username').value = 'shstsa@gmail.com';
+        document.getElementById('password').value = 'Tsa2025';
+    });
+
+    // Only accept the pre-made account
+    document.getElementById('loginForm').onsubmit = function(e) {
+        e.preventDefault();
+        var email = document.getElementById('username').value.trim();
+        var password = document.getElementById('password').value;
+        if(email === 'shstsa@gmail.com' && password === 'Tsa2025') {
+            // Mark user as logged in in localStorage for the demo site
+            try { localStorage.setItem('crh_logged_in', 'true'); localStorage.setItem('crh_user_email', email); } catch(e) {}
+            document.getElementById('loginForm').style.display = 'none';
+            document.getElementById('loginMessage').style.display = 'block';
+            document.getElementById('loginError').style.display = 'none';
+            // If a return URL is provided, redirect back
+            var params = new URLSearchParams(window.location.search);
+            var ret = params.get('return');
+            if(ret) {
+                // small delay so user sees the success message briefly
+                setTimeout(function(){ window.location.href = ret; }, 700);
+            }
+        } else {
+            document.getElementById('loginError').style.display = 'block';
+            document.getElementById('loginMessage').style.display = 'none';
+        }
+    };
+    </script>
+
+    <script>
+    // enhance nav: set active link based on current path and add ARIA role
+    (function(){
+        try{
+            var nav = document.querySelector('.nav-links');
+            if(nav){ nav.setAttribute('role','navigation'); nav.setAttribute('aria-label','Main'); }
+            var links = document.querySelectorAll('.nav-links a');
+            var path = location.pathname.split('/').pop() || 'index.html';
+            links.forEach(function(a){
+                a.classList.toggle('active', a.getAttribute('href') === path || (a.getAttribute('href')==='./index.html' && path===''));
+                a.addEventListener('keydown', function(e){ if(e.key==='Enter'){ a.click(); } });
+            });
+        }catch(e){}
+    })();
+    </script>
+    <script>
+    // mobile nav toggle
+    (function(){
+        var btn = document.querySelector('.nav-toggle');
+        var nav = document.querySelector('.nav-links');
+        if(!btn || !nav) return;
+        btn.addEventListener('click', function(){
+            var open = nav.classList.toggle('open');
+            btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        });
+    })();
+    </script>
+    <script src="scripts.js"></script>
+</body>
+</html>

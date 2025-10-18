@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Our Mission - Community Resource Hub</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header">
+        <a href="index.html" class="logo">Community Resource Hub</a>
+        <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false"><span class="bar"></span><span class="bar"></span><span class="bar"></span></button>
+        <nav class="nav-links">
+            <a href="./index.html">Home</a>
+            <a href="./story.html">Our Story</a>
+            <a href="./mission.html">Our Mission</a>
+            <a href="./resources.html">Resource Directory</a>
+            <a href="./events.html">Events</a>
+            <a href="./submit.html">Submit Resource</a>
+            <a href="./contactus.html">Contact</a>
+            <a href="./login.html">Login</a>
+        </nav>
+    </header>
+
+    <section class="page-hero">
+        <div class="hero-background">
+            <div class="placeholder-img"></div>
+        </div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content container">
+            <h1 class="hero-title reveal">Our Mission</h1>
+            <p class="hero-sub reveal" data-reveal-delay="80">We connect people to local services and support networks so everyone can find help when they need it. Our mission focuses on accessibility, collaboration, and measurable impact across neighborhoods.</p>
+            <p style="margin-top:1rem;"><a class="cta-button reveal" data-reveal-delay="160" href="resources.html">Browse Resources</a></p>
+        </div>
+    </section>
+
+    <main class="container" style="padding-top:2.5rem;">
+        <section class="mission-overview">
+            <div class="mission-slider" aria-roledescription="carousel">
+                <div class="slide-wrap">
+                    <div class="mission-slide active reveal" data-reveal-delay="60" data-index="0">
+                        <div class="placeholder-img"></div>
+                        <div class="card-content">
+                            <h3>Accessibility First</h3>
+                            <p>We design tools and guides so people can find services quickly — online and in-person. Multiple contact options and plain-language information are core to our work.</p>
+                        </div>
+                    </div>
+                        <div class="mission-slide next reveal" data-reveal-delay="120" data-index="1">
+                        <div class="placeholder-img"></div>
+                        <div class="card-content">
+                            <h3>Partner Collaboration</h3>
+                            <p>We work with nonprofits, health providers, and local government to keep listings accurate and connect programs efficiently to residents.</p>
+                        </div>
+                    </div>
+                    <div class="mission-slide prev reveal" data-reveal-delay="180" data-index="2">
+                        <div class="placeholder-img"></div>
+                        <div class="card-content">
+                            <h3>Measure Impact</h3>
+                            <p>Our team tracks outcomes and feedback so we can prioritize outreach and improve the services most needed by the community.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="slider-controls">
+                    <button id="missionPrev" aria-label="Previous">◀</button>
+                    <button id="missionNext" aria-label="Next">▶</button>
+                </div>
+                <div class="mission-dots" role="tablist">
+                    <button class="mission-dot active" data-index="0" aria-label="Slide 1"></button>
+                    <button class="mission-dot" data-index="1" aria-label="Slide 2"></button>
+                    <button class="mission-dot" data-index="2" aria-label="Slide 3"></button>
+                </div>
+            </div>
+        </section>
+
+        <section style="margin-top:2rem;">
+            <h2>How we work</h2>
+            <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-top:1rem;">
+                <div style="flex:1;min-width:260px;">
+                    <p>We verify listings, highlight trusted partners, and publish clear step-by-step guidance to help people act quickly. Our volunteer network supports outreach and helps collect on-the-ground feedback.</p>
+                </div>
+                <div style="flex:1;min-width:260px;">
+                    <p>We prioritize equity in our outreach, ensuring services are reachable by people with different needs — multilingual materials, accessible meeting locations, and digital-friendly forms.</p>
+                </div>
+            </div>
+        </section>
+
+        <section style="margin-top:2rem;">
+            <h2>Snapshots from our work</h2>
+            <div class="mission-gallery" style="margin-top:1rem; display:grid; grid-template-columns: repeat(3, 1fr); gap: 12px;">
+                <div class="placeholder-img" style="height:120px; background:#e6eef8; border:1px dashed rgba(26,41,66,0.06);"></div>
+                <div class="placeholder-img" style="height:120px; background:#e6eef8; border:1px dashed rgba(26,41,66,0.06);"></div>
+                <div class="placeholder-img" style="height:120px; background:#e6eef8; border:1px dashed rgba(26,41,66,0.06);"></div>
+            </div>
+        </section>
+
+        <section class="mission-cta" style="margin-top:2.25rem; background:#f5f8fa; padding:1.25rem; border-radius:10px;">
+            <div style="display:flex; align-items:center; gap:1rem; flex-wrap:wrap;">
+                <div style="flex:1; min-width:220px;">
+                    <h3 style="margin:0;color:var(--brand-blue);">Join our efforts</h3>
+                    <p style="margin:0.4rem 0 0 0; color:#5b6b76;">If you're an organization or volunteer, sign up to partner with us or submit a listing.</p>
+                </div>
+                <div>
+                    <a class="cta-button" href="submit.html">Partner / Submit</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div>
+                <h3>Community Resource Hub</h3>
+                <p>Connecting our community with essential resources</p>
+            </div>
+            <div>
+                <h4>Navigation</h4>
+                <p><a href="index.html">Home</a></p>
+                <p><a href="story.html">Our Story</a></p>
+                <p><a href="resources.html">Resources</a></p>
+                <p><a href="contactus.html">Contact</a></p>
+            </div>
+            <div>
+                <h4>Contact Info</h4>
+                <p>123 Community Street</p>
+                <p>Local City, ST 12345</p>
+                <p>contact@resourcehub.org</p>
+            </div>
+        </div>
+        </footer>
+
+        <script>
+        (function(){
+            var slider = document.querySelector('.mission-slider');
+            if(!slider) return;
+            var slides = Array.from(slider.querySelectorAll('.mission-slide'));
+            var nextBtn = document.getElementById('missionNext');
+            var prevBtn = document.getElementById('missionPrev');
+            var dots = Array.from(slider.querySelectorAll('.mission-dot'));
+            var current = 0;
+
+            function update(n){
+                current = (n + slides.length) % slides.length;
+                slides.forEach(function(s,i){ s.classList.remove('active','prev','next','hidden'); });
+                var active = slides[current];
+                var prev = slides[(current - 1 + slides.length) % slides.length];
+                var next = slides[(current + 1) % slides.length];
+                active.classList.add('active');
+                prev.classList.add('prev');
+                next.classList.add('next');
+                slides.forEach(function(s){ if(s!==active && s!==prev && s!==next) s.classList.add('hidden'); });
+                dots.forEach(function(d,i){ d.classList.toggle('active', i===current); });
+            }
+
+            nextBtn.addEventListener('click', function(){ update(current+1); });
+            prevBtn.addEventListener('click', function(){ update(current-1); });
+            dots.forEach(function(d){ d.addEventListener('click', function(){ update(parseInt(d.dataset.index,10)); }); });
+
+            // keyboard support
+            slider.addEventListener('keydown', function(e){ if(e.key==='ArrowRight') update(current+1); if(e.key==='ArrowLeft') update(current-1); });
+
+            // initial
+            update(0);
+        })();
+        </script>
+
+        <script>
+        // enhance nav: set active link based on current path and add ARIA role
+        (function(){
+            try{
+                var nav = document.querySelector('.nav-links');
+                if(nav){ nav.setAttribute('role','navigation'); nav.setAttribute('aria-label','Main'); }
+                var links = document.querySelectorAll('.nav-links a');
+                var path = location.pathname.split('/').pop() || 'index.html';
+                links.forEach(function(a){
+                    a.classList.toggle('active', a.getAttribute('href') === path || (a.getAttribute('href')==='./index.html' && path===''));
+                    a.addEventListener('keydown', function(e){ if(e.key==='Enter'){ a.click(); } });
+                });
+            }catch(e){}
+        })();
+        </script>
+        <script>
+        // mobile nav toggle
+        (function(){
+            var btn = document.querySelector('.nav-toggle');
+            var nav = document.querySelector('.nav-links');
+            if(!btn || !nav) return;
+            btn.addEventListener('click', function(){
+                var open = nav.classList.toggle('open');
+                btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+            });
+        })();
+        </script>
+        <script src="scripts.js"></script>
+
+    </body>
+    </html>

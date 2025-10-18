@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resource Directory - Community Resource Hub</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Only keep the toggle button styling inline; rest lives in styles.css */
+        .filters-toggle {
+            display: inline-flex;
+            align-items: center;
+            gap: .5rem;
+            background: #1e3d59;
+            color: #fff;
+            border: none;
+            padding: .5rem .75rem;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <a href="index.html" class="logo">Community Resource Hub</a>
+        <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false"><span class="bar"></span><span class="bar"></span><span class="bar"></span></button>
+        <nav class="nav-links">
+            <a href="./index.html">Home</a>
+            <a href="./story.html">Our Story</a>
+            <a href="./mission.html">Our Mission</a>
+            <a href="./resources.html" class="active">Resource Directory</a>
+            <a href="./events.html">Events</a>
+            <a href="./submit.html">Submit Resource</a>
+            <a href="./contactus.html">Contact</a>
+            <a href="./login.html">Login</a>
+        </nav>
+    </header>
+
+    <section class="page-hero">
+        <div class="hero-background">
+            <div class="placeholder-img"></div>
+        </div>
+        <div class="hero-overlay"></div>
+        <style>
+            /* page-scoped: avoid header overlap and ensure white hero text */
+            .page-hero .hero-content { padding-top: 120px; text-align: center; color: #fff; }
+            .page-hero .hero-content h1, .page-hero .hero-content p { color: #fff; }
+            @media (max-width: 900px) { .page-hero .hero-content { padding-top: 80px; } }
+        </style>
+        <div class="hero-content">
+            <h1 class="reveal">Resource Directory</h1>
+            <p class="reveal" data-reveal-delay="80">Find the support you need in our community</p>
+        </div>
+    </section>
+
+    <section class="resource-directory">
+        <div class="container">
+            <aside class="directory-filters collapsed" id="directoryFilters" aria-hidden="true">
+                <!-- Mobile handle (desktop will ignore/hide if not needed) -->
+                <button class="filters-handle reveal" id="filtersToggle" aria-expanded="false" aria-controls="directoryFilters" data-reveal-delay="90">Filters</button>
+                <div class="filters-inner">
+                    <div class="filter-block" id="searchBlock">
+                        <label for="searchInput" class="sr-only">Search resources</label>
+                        <input type="text" id="searchInput" placeholder="Search resources..." class="search-input">
+                    </div>
+
+                    <div class="filter-block" id="categoriesBlock">
+                        <h4 tabindex="0" role="button" aria-expanded="true">Categories</h4>
+                        <div id="categoryButtons" class="filter-buttons">
+                            <button class="filter-btn" data-value="">All</button>
+                            <button class="filter-btn" data-value="health">Healthcare</button>
+                            <button class="filter-btn" data-value="education">Education</button>
+                            <button class="filter-btn" data-value="housing">Housing</button>
+                            <button class="filter-btn" data-value="food">Food Assistance</button>
+                            <button class="filter-btn" data-value="employment">Employment</button>
+                        </div>
+                    </div>
+
+                    <div class="filter-block collapsed" id="locationsBlock">
+                        <h4 tabindex="0" role="button" aria-expanded="false">Locations</h4>
+                        <div id="locationButtons" class="filter-buttons">
+                            <button class="filter-btn" data-value="">All</button>
+                            <button class="filter-btn" data-value="north">North</button>
+                            <button class="filter-btn" data-value="south">South</button>
+                            <button class="filter-btn" data-value="east">East</button>
+                            <button class="filter-btn" data-value="west">West</button>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <div class="resources-grid">
+                <!-- no-match banner inserted via JS when a query yields no exact matches -->
+                <div id="noMatchBanner" class="no-match-banner" style="display:none;">
+                    <strong>No exact match found.</strong>
+                    <p>We don't have an exact resource matching your search term — try browsing the directory below or refine your search.</p>
+                </div>
+                <!-- 15 placeholder resources (Resource 1..15) -->
+                <!-- Categories rotate: health, education, housing, food, employment -->
+                <div class="resource-card reveal" data-reveal-delay="60" data-category="health" data-location="north">
+                    <div class="placeholder-img-square"></div>
+                    <div class="resource-content"><h3>Resource 1</h3><p></p><div class="resource-tags"><span class="tag">Healthcare</span></div><a href="#" class="resource-link">Learn More →</a></div>
+                </div>
+                <div class="resource-card reveal" data-reveal-delay="80" data-category="education" data-location="south">
+                    <div class="placeholder-img-square"></div>
+                    <div class="resource-content"><h3>Resource 2</h3><p></p><div class="resource-tags"><span class="tag">Education</span></div><a href="#" class="resource-link">Learn More →</a></div>
+                </div>
+                <div class="resource-card" data-category="housing" data-location="east">
+                    <div class="placeholder-img-square"></div>
+                    <div class="resource-content"><h3>Resource 3</h3><p></p><div class="resource-tags"><span class="tag">Housing</span></div><a href="#" class="resource-link">Learn More →</a></div>
+                </div>
+                <div class="resource-card" data-category="food" data-location="west">
+                    <div class="placeholder-img-square"></div>
+                    <div class="resource-content"><h3>Resource 4</h3><p></p><div class="resource-tags"><span class="tag">Food Assistance</span></div><a href="#" class="resource-link">Learn More →</a></div>
+                </div>
+                <div class="resource-card" data-category="employment" data-location="north">
+                    <div class="placeholder-img-square"></div>
+                    <div class="resource-content"><h3>Resource 5</h3><p></p><div class="resource-tags"><span class="tag">Employment</span></div><a href="#" class="resource-link">Learn More →</a></div>
+                </div>
+                <div class="resource-card" data-category="health" data-location="south">
+                    <div class="placeholder-img-square"></div>
+                    <div class="resource-content"><h3>Resource 6</h3><p></p><div class="resource-tags"><span class="tag">Healthcare</span></div><a href="#" class="resource-link">Learn More →</a></div>
+                </div>
+                <div class="resource-card" data-category="education" data-location="east">
+                    <div class="placeholder-img-square"></div>
+                    <div class="resource-content"><h3>Resource 7</h3><p></p><div class="resource-tags"><span class="tag">Education</span></div><a href="#" class="resource-link">Learn More →</a></div>
+                </div>
+                <div class="resource-card" data-category="housing" data-location="west">
+                    <div class="placeholder-img-square"></div>
+                    <div class="resource-content"><h3>Resource 8</h3><p></p><div class="resource-tags"><span class="tag">Housing</span></div><a href="#" class="resource-link">Learn More →</a></div>
+                </div>
+                <div class="resource-card" data-category="food" data-location="north">
+                    <div class="placeholder-img-square"></div>
+                    <div class="resource-content"><h3>Resource 9</h3><p></p><div class="resource-tags"><span class="tag">Food Assistance</span></div><a href="#" class="resource-link">Learn More →</a></div>
+                </div>
+                <div class="resource-card" data-category="employment" data-location="south">
+                    <div class="placeholder-img-square"></div>
+                    <div class="resource-content"><h3>Resource 10</h3><p></p><div class="resource-tags"><span class="tag">Employment</span></div><a href="#" class="resource-link">Learn More →</a></div>
+                </div>
+                <div class="resource-card" data-category="health" data-location="east">
+                    <div class="placeholder-img-square"></div>
+                    <div class="resource-content"><h3>Resource 11</h3><p></p><div class="resource-tags"><span class="tag">Healthcare</span></div><a href="#" class="resource-link">Learn More →</a></div>
+                </div>
+                <div class="resource-card" data-category="education" data-location="west">
+                    <div class="placeholder-img-square"></div>
+                    <div class="resource-content"><h3>Resource 12</h3><p></p><div class="resource-tags"><span class="tag">Education</span></div><a href="#" class="resource-link">Learn More →</a></div>
+                </div>
+                <div class="resource-card" data-category="housing" data-location="north">
+                    <div class="placeholder-img-square"></div>
+                    <div class="resource-content"><h3>Resource 13</h3><p></p><div class="resource-tags"><span class="tag">Housing</span></div><a href="#" class="resource-link">Learn More →</a></div>
+                </div>
+                <div class="resource-card" data-category="food" data-location="south">
+                    <div class="placeholder-img-square"></div>
+                    <div class="resource-content"><h3>Resource 14</h3><p></p><div class="resource-tags"><span class="tag">Food Assistance</span></div><a href="#" class="resource-link">Learn More →</a></div>
+                </div>
+                <div class="resource-card" data-category="employment" data-location="east">
+                    <div class="placeholder-img-square"></div>
+                    <div class="resource-content"><h3>Resource 15</h3><p></p><div class="resource-tags"><span class="tag">Employment</span></div><a href="#" class="resource-link">Learn More →</a></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+    (function(){
+        // Nav enhancement
+        try{
+            var nav = document.querySelector('.nav-links');
+            if(nav){ nav.setAttribute('role','navigation'); nav.setAttribute('aria-label','Main'); }
+            var links = document.querySelectorAll('.nav-links a');
+            var path = location.pathname.split('/').pop() || 'index.html';
+            links.forEach(function(a){
+                a.classList.toggle('active', a.getAttribute('href') === path);
+                a.addEventListener('keydown', function(e){ if(e.key==='Enter'){ a.click(); } });
+            });
+        }catch(e){ console.warn('nav init failed', e); }
+
+        // Combined filtering: search text + category + location
+        try{
+            var input = document.getElementById('searchInput');
+            var cards = Array.from(document.querySelectorAll('.resource-card'));
+            var categoryButtons = Array.from(document.querySelectorAll('#categoryButtons .filter-btn'));
+            var locationButtons = Array.from(document.querySelectorAll('#locationButtons .filter-btn'));
+            var activeCategory = '';
+            var activeLocation = '';
+
+            function applyFilters(){
+                var q = (input && input.value || '').toLowerCase().trim();
+                var cat = (activeCategory || '').toLowerCase();
+                var loc = (activeLocation || '').toLowerCase();
+
+                cards.forEach(function(card){
+                    var text = (card.innerText || '').toLowerCase();
+                    var cardCat = (card.getAttribute('data-category')||'').toLowerCase();
+                    var cardLoc = (card.getAttribute('data-location')||'').toLowerCase();
+
+                    var matchesText = q === '' || text.indexOf(q) > -1;
+                    var matchesCat = cat === '' || cardCat === cat;
+                    var matchesLoc = loc === '' || cardLoc === loc;
+
+                    card.style.display = (matchesText && matchesCat && matchesLoc) ? '' : 'none';
+                });
+            }
+
+            if(input) input.addEventListener('input', applyFilters);
+
+            categoryButtons.forEach(function(btn){
+                btn.addEventListener('click', function(){
+                    categoryButtons.forEach(function(b){ b.classList.remove('active'); });
+                    btn.classList.add('active');
+                    activeCategory = btn.getAttribute('data-value') || '';
+                    applyFilters();
+                });
+            });
+
+            locationButtons.forEach(function(btn){
+                btn.addEventListener('click', function(){
+                    locationButtons.forEach(function(b){ b.classList.remove('active'); });
+                    btn.classList.add('active');
+                    activeLocation = btn.getAttribute('data-value') || '';
+                    applyFilters();
+                });
+            });
+
+            // initial defaults
+            if(categoryButtons[0]) categoryButtons[0].classList.add('active');
+            if(locationButtons[0]) locationButtons[0].classList.add('active');
+        }catch(e){ console.warn('filter init failed', e); }
+    })();
+    </script>
+
+    <script>
+    // If the user arrived with ?q=, perform an exact word-for-word title match.
+    (function(){
+        try{
+            var params = new URLSearchParams(location.search);
+            var q = (params.get('q') || '').trim();
+            if(!q) return;
+            var banner = document.getElementById('noMatchBanner');
+            var cards = Array.from(document.querySelectorAll('.resource-card'));
+
+            var target = q.replace(/\s+/g,' ').toLowerCase().trim();
+            var matched = cards.filter(function(card){
+                var titleEl = card.querySelector('h3');
+                var title = (titleEl && titleEl.innerText || '').replace(/\s+/g,' ').toLowerCase().trim();
+                return title === target;
+            });
+
+            if(matched.length === 0){
+                // show banner and focus it for accessibility
+                if(banner){ banner.style.display = 'block'; banner.setAttribute('role','status'); banner.tabIndex = -1; banner.focus(); }
+                // keep full directory visible for browsing
+            } else {
+                // only show matches
+                cards.forEach(function(c){ c.style.display = 'none'; });
+                matched.forEach(function(c){ c.style.display = ''; });
+            }
+        }catch(e){ console.warn('query handling failed', e); }
+    })();
+    </script>
+    <script>
+        // Filters behavior: collapsed by default; clicking the handle expands the sidebar (desktop and mobile).
+    (function(){
+        var btn = document.getElementById('filtersToggle');
+        var panel = document.getElementById('directoryFilters');
+        if(!btn || !panel) return;
+
+        // mark initial active filter buttons
+        var catBtns = document.querySelectorAll('#categoryButtons .filter-btn');
+        var locBtns = document.querySelectorAll('#locationButtons .filter-btn');
+        if(catBtns && catBtns[0]) catBtns[0].classList.add('active');
+        if(locBtns && locBtns[0]) locBtns[0].classList.add('active');
+
+        function openPanel(){
+            panel.classList.remove('collapsed');
+            panel.classList.add('open');
+            panel.setAttribute('aria-hidden','false');
+            btn.setAttribute('aria-expanded','true');
+        }
+        function closePanel(){
+            panel.classList.add('collapsed');
+            panel.classList.remove('open');
+            panel.setAttribute('aria-hidden','true');
+            btn.setAttribute('aria-expanded','false');
+        }
+
+        btn.addEventListener('click', function(e){
+            e.stopPropagation();
+            var isCollapsed = panel.classList.contains('collapsed');
+            if(isCollapsed) openPanel(); else closePanel();
+        });
+
+        // close when clicking outside (only when panel is open)
+        document.addEventListener('click', function(e){
+            if(panel.classList.contains('collapsed')) return;
+            if(panel.contains(e.target) || e.target === btn) return;
+            closePanel();
+        });
+
+        // allow Esc key to close
+        document.addEventListener('keydown', function(e){ if(e.key === 'Escape' && !panel.classList.contains('collapsed')) closePanel(); });
+
+        // Accordion behavior for headings
+        var blocks = Array.from(document.querySelectorAll('.directory-filters .filter-block'));
+        blocks.forEach(function(block){
+            var heading = block.querySelector('h4');
+            if(!heading) return;
+            function toggleBlock(){
+                var collapsed = block.classList.toggle('collapsed');
+                heading.setAttribute('aria-expanded', collapsed ? 'false' : 'true');
+            }
+            heading.addEventListener('click', toggleBlock);
+            heading.addEventListener('keydown', function(e){ if(e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleBlock(); } });
+        });
+
+    })();
+    </script>
+    <!-- Sticky/stuck behavior removed so the sidebar remains in-flow and does not move on scroll -->
+
+    <section class="testimonials">
+        <div class="container">
+            <h2>What Our Community Says</h2>
+            <div class="testimonials-slider">
+                <div class="testimonial-track">
+                    <div class="testimonial-card">
+                        <div class="user-info">
+                            <div class="user-avatar">
+                                <div class="placeholder-img-circle"></div>
+                            </div>
+                            <div class="user-details">
+                                <h3>Sarah Mitchell</h3>
+                                <p>Community Member</p>
+                            </div>
+                        </div>
+                        <p class="review-text">"The Resource Hub has connected me with amazing local services that I didn't even know existed."</p>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div class="user-info">
+                            <div class="user-avatar">
+                                <div class="placeholder-img-circle"></div>
+                            </div>
+                            <div class="user-details">
+                                <h3>Michael Chen</h3>
+                                <p>Community Volunteer</p>
+                            </div>
+                        </div>
+                        <p class="review-text">"This platform makes it so easy to find and connect with local support services."</p>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div class="user-info">
+                            <div class="user-avatar">
+                                <div class="placeholder-img-circle"></div>
+                            </div>
+                            <div class="user-details">
+                                <h3>Emily Rodriguez</h3>
+                                <p>Local Organization Leader</p>
+                            </div>
+                        </div>
+                        <p class="review-text">"We've reached so many more people in need since joining the Resource Hub."</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div>
+                <h3>Community Resource Hub</h3>
+                <p>Connecting our community with essential resources</p>
+            </div>
+            <div>
+                <h4>Navigation</h4>
+                <p><a href="index.html">Home</a></p>
+                <p><a href="story.html">Our Story</a></p>
+                <p><a href="resources.html">Resources</a></p>
+                <p><a href="contactus.html">Contact</a></p>
+            </div>
+            <div>
+                <h4>Contact Info</h4>
+                <p>123 Community Street</p>
+                <p>Local City, ST 12345</p>
+                <p>contact@resourcehub.org</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
+
+<!-- mobile nav toggle wiring -->
+<script>
+    (function(){
+        var btn = document.querySelector('.nav-toggle');
+        var nav = document.querySelector('.nav-links');
+        if(!btn || !nav) return;
+        btn.addEventListener('click', function(){
+            var open = nav.classList.toggle('open');
+            btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        });
+    })();
+</script>
+<script src="scripts.js"></script>

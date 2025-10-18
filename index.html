@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community Resource Hub</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header">
+        <a href="index.html" class="logo">Community Resource Hub</a>
+        <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false"><span class="bar"></span><span class="bar"></span><span class="bar"></span></button>
+        <nav class="nav-links">
+            <a href="./index.html" class="active">Home</a>
+            <a href="./story.html">Our Story</a>
+            <a href="./mission.html">Our Mission</a>
+            <a href="./resources.html">Resource Directory</a>
+            <a href="./events.html">Events</a>
+            <a href="./submit.html">Submit Resource</a>
+            <a href="./contactus.html">Contact</a>
+            <a href="./login.html">Login</a>
+        </nav>
+    </header>
+
+    <section class="hero-main">
+        <div class="slider-container">
+            <div class="slider">
+                <div class="slide fade">
+                    <div class="placeholder-img"></div>
+                    <div class="slide-content">
+                            <h1 class="reveal" data-reveal-delay="80">Welcome to Our Community Hub</h1>
+                            <p class="reveal" data-reveal-delay="180">Connecting you with local resources and support</p>
+                    </div>
+                </div>
+                <div class="slide fade">
+                    <div class="placeholder-img"></div>
+                    <div class="slide-content">
+                            <h1 class="reveal" data-reveal-delay="80">Find Local Resources</h1>
+                            <p class="reveal" data-reveal-delay="180">Access support services and community programs</p>
+                    </div>
+                </div>
+                <div class="slide fade">
+                    <div class="placeholder-img"></div>
+                    <div class="slide-content">
+                            <h1 class="reveal" data-reveal-delay="80">Community Support</h1>
+                            <p class="reveal" data-reveal-delay="180">Building stronger connections every day</p>
+                    </div>
+                </div>
+                <div class="slider-nav">
+                    <span class="dot" onclick="currentSlide(1)"></span>
+                    <span class="dot" onclick="currentSlide(2)"></span>
+                    <span class="dot" onclick="currentSlide(3)"></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="search-section">
+        <div class="container">
+            <h2 class="reveal">Find Resources</h2>
+            <div class="search-container reveal" data-reveal-delay="90">
+                <div class="search-panel">
+                    <input type="text" id="resourceSearch" placeholder="Search for resources...">
+                    <select id="categoryFilter">
+                        <option value="">All Categories</option>
+                        <option value="health">Healthcare</option>
+                        <option value="education">Education</option>
+                        <option value="housing">Housing</option>
+                        <option value="food">Food Assistance</option>
+                        <option value="employment">Employment</option>
+                    </select>
+                    <button class="search-button">Search</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="resource-highlights">
+        <div class="container">
+            <h2 class="reveal">Featured Resources</h2>
+            <div class="highlight-grid">
+                <div class="highlight-card">
+                    <div class="placeholder-img"></div>
+                    <div class="card-content">
+                        <h3 class="reveal">Local Food Bank</h3>
+                        <p class="reveal" data-reveal-delay="60">Providing food assistance to families in need</p>
+                        <div class="tags">
+                            <span class="tag">Food Assistance</span>
+                            <span class="tag">Non-Profit</span>
+                        </div>
+                        <a href="#" class="learn-more">Learn More</a>
+                    </div>
+                </div>
+                <div class="highlight-card">
+                    <div class="placeholder-img"></div>
+                    <div class="card-content">
+                        <h3>Youth Education Center</h3>
+                        <p>After-school programs and tutoring services</p>
+                        <div class="tags">
+                            <span class="tag">Education</span>
+                            <span class="tag">Youth</span>
+                        </div>
+                        <a href="#" class="learn-more">Learn More</a>
+                    </div>
+                </div>
+                <div class="highlight-card">
+                    <div class="placeholder-img"></div>
+                    <div class="card-content">
+                        <h3>Mental Health Support</h3>
+                        <p>Free counseling and mental health resources</p>
+                        <div class="tags">
+                            <span class="tag">Healthcare</span>
+                            <span class="tag">Support Services</span>
+                        </div>
+                        <a href="#" class="learn-more">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="quick-submit">
+        <div class="container">
+            <h2>Know a Resource?</h2>
+            <p>Help our community grow by submitting a new resource to our directory.</p>
+            <a href="submit.html" class="cta-button">Submit Resource</a>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <div class="container">
+            <h2>What Our Community Says</h2>
+            <div class="testimonials-slider">
+                <div class="testimonial-track">
+                    <div class="testimonial-card">
+                        <div class="user-info">
+                            <div class="user-avatar">
+                                <div class="placeholder-img-circle"></div>
+                            </div>
+                            <div class="user-details">
+                                <h3>Sarah Mitchell</h3>
+                                <p>Community Member</p>
+                            </div>
+                        </div>
+                        <p class="review-text">"The Resource Hub has connected me with amazing local services that I didn't even know existed."</p>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="user-info">
+                            <div class="user-avatar">
+                                <div class="placeholder-img-circle"></div>
+                            </div>
+                            <div class="user-details">
+                                <h3>Michael Chen</h3>
+                                <p>Community Volunteer</p>
+                            </div>
+                        </div>
+                        <p class="review-text">"This platform makes it so easy to find and connect with local support services."</p>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="user-info">
+                            <div class="user-avatar">
+                                <div class="placeholder-img-circle"></div>
+                            </div>
+                            <div class="user-details">
+                                <h3>Emily Rodriguez</h3>
+                                <p>Local Organization Leader</p>
+                            </div>
+                        </div>
+                        <p class="review-text">"We've reached so many more people in need since joining the Resource Hub."</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div>
+                <h3>Community Resource Hub</h3>
+                <p>Connecting our community with essential resources</p>
+            </div>
+            <div>
+                <h4>Navigation</h4>
+                <p><a href="index.html">Home</a></p>
+                <p><a href="story.html">Our Story</a></p>
+                <p><a href="resources.html">Resources</a></p>
+                <p><a href="contactus.html">Contact</a></p>
+            </div>
+            <div>
+                <h4>Contact Info</h4>
+                <p>123 Community Street</p>
+                <p>Local City, ST 12345</p>
+                <p>contact@resourcehub.org</p>
+            </div>
+        </div>
+    </footer>
+    <script>
+    // enhance nav: set active link based on current path and add ARIA role
+    (function(){
+        try{
+            var nav = document.querySelector('.nav-links');
+            if(nav){ nav.setAttribute('role','navigation'); nav.setAttribute('aria-label','Main'); }
+            var links = document.querySelectorAll('.nav-links a');
+            var path = location.pathname.split('/').pop() || 'index.html';
+            links.forEach(function(a){
+                a.classList.toggle('active', a.getAttribute('href') === path || (a.getAttribute('href')==='./index.html' && path==='')); 
+                a.addEventListener('keydown', function(e){ if(e.key==='Enter'){ a.click(); } });
+            });
+        }catch(e){}
+    })();
+    </script>
+    <script>
+    // small hero slider initializer: show first slide and wire simple dot controls
+    (function(){
+        try{
+            var slider = document.querySelector('.slider');
+            if(!slider) return;
+            var slides = slider.querySelectorAll('.slide');
+            var dots = slider.querySelectorAll('.slider-nav .dot');
+            if(!slides.length) return;
+            // show first slide
+            slides.forEach(function(s,i){ s.style.display = (i===0? 'block' : 'none'); });
+            if(dots.length){ dots[0].classList.add('active'); }
+            // expose a simple currentSlide function used by inline onclicks
+            window.currentSlide = function(n){
+                var idx = Math.max(1, Math.min(n, slides.length)) - 1;
+                slides.forEach(function(s,i){ s.style.display = (i===idx? 'block' : 'none'); });
+                dots.forEach(function(d,i){ d.classList.toggle('active', i===idx); });
+            };
+        }catch(e){ console.warn('slider init error', e); }
+    })();
+    </script>
+    <script>
+    // Home search: redirect to resources page with query param
+    (function(){
+        try{
+            var input = document.getElementById('resourceSearch');
+            var btn = document.querySelector('.search-button');
+            function go(){
+                var q = (input && input.value || '').trim();
+                // always navigate to resources page (empty or with query)
+                var url = 'resources.html' + (q ? ('?q=' + encodeURIComponent(q)) : '');
+                window.location.href = url;
+            }
+            if(btn) btn.addEventListener('click', go);
+            if(input) input.addEventListener('keydown', function(e){ if(e.key === 'Enter'){ e.preventDefault(); go(); } });
+        }catch(e){ console.warn('search redirect failed', e); }
+    })();
+    </script>
+    <script>
+    // mobile nav toggle
+    (function(){
+        var btn = document.querySelector('.nav-toggle');
+        var nav = document.querySelector('.nav-links');
+        if(!btn || !nav) return;
+        btn.addEventListener('click', function(){
+            var open = nav.classList.toggle('open');
+            btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        });
+    })();
+    </script>
+    <script src="scripts.js"></script>
+</body>
+</html>

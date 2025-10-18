@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Story - Community Resource Hub</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header">
+        <a href="index.html" class="logo">Community Resource Hub</a>
+        <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false"><span class="bar"></span><span class="bar"></span><span class="bar"></span></button>
+        <nav class="nav-links">
+            <a href="./index.html">Home</a>
+            <a href="./story.html">Our Story</a>
+            <a href="./mission.html">Our Mission</a>
+            <a href="./resources.html">Resource Directory</a>
+            <a href="./events.html">Events</a>
+            <a href="./submit.html">Submit Resource</a>
+            <a href="./contactus.html">Contact</a>
+            <a href="./login.html">Login</a>
+        </nav>
+    </header>
+
+    <section class="page-hero">
+        <div class="hero-background">
+            <div class="placeholder-img"></div>
+        </div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content container">
+            <h1 class="hero-title reveal">Our Story</h1>
+            <p class="hero-sub reveal" data-reveal-delay="80">Building a stronger community together</p>
+        </div>
+    </section>
+
+    <section class="story-content">
+        <div class="container">
+            <div class="story-grid">
+                <div class="story-text">
+                    <div class="rect-card reveal" data-reveal-delay="60" data-card="started">
+                        <h2>How We Started</h2>
+                        <p>Founded in 2023, the Community Resource Hub began as a grassroots initiative to connect local residents with essential services and support.</p>
+                        <div class="card-more">
+                            <p>What started as a simple neighborhood directory grew from volunteer efforts and local meetups. We partnered with organizations, added verified listings, and expanded into the hub you see today.</p>
+                        </div>
+                        <button class="card-toggle" aria-expanded="false"><span class="arrow">▾</span> Read more</button>
+                    </div>
+
+                    <div class="rect-card reveal" data-reveal-delay="120" data-card="mission">
+                        <h2>Our Mission</h2>
+                        <p>We believe every person deserves easy access to the services they need. Our mission is to connect people to local programs, help organizations share their offerings, and empower communities with accurate information.</p>
+                        <div class="card-more">
+                            <p>We prioritize accessibility, inclusivity, and collaboration. We build tools and run outreach that reduce friction for people seeking help and keep partners connected and informed.</p>
+                        </div>
+                        <button class="card-toggle" aria-expanded="false"><span class="arrow">▾</span> Read more</button>
+                    </div>
+
+                    <div class="rect-card reveal" data-reveal-delay="180" data-card="impact">
+                        <h2>Our Impact</h2>
+                        <p>Since our inception, we have:</p>
+                        <ul class="impact-list">
+                            <li>Connected over 5,000 residents with essential services</li>
+                            <li>Partnered with 100+ local organizations</li>
+                            <li>Facilitated 1,000+ successful resource connections</li>
+                            <li>Organized 50+ community outreach events</li>
+                        </ul>
+                        <div class="card-more">
+                            <p>We measure impact through feedback and partnership reports. These insights inform where we focus outreach and how we improve services over time.</p>
+                        </div>
+                        <button class="card-toggle" aria-expanded="false"><span class="arrow">▾</span> Read more</button>
+                    </div>
+                </div>
+                <div class="story-image">
+                    <div class="placeholder-img reveal" data-reveal-delay="80"></div>
+                    <p class="image-caption reveal" data-reveal-delay="120">Our community gathering, Summer 2024</p>
+                    <!-- Photo collage: dense mosaic of varied tiles -->
+                    <div class="photo-collage" aria-hidden="false">
+                        <div class="tile t1"></div>
+                        <div class="tile t2"></div>
+                        <div class="tile t3"></div>
+                        <div class="tile t4"></div>
+                        <div class="tile t5"></div>
+                        <div class="tile t6"></div>
+                        <div class="tile t7"></div>
+                        <div class="tile t8"></div>
+                        <div class="tile t9"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="values-section">
+                <h2>Our Values</h2>
+                <div class="values-layout">
+                    <div class="values-left">
+                        <div class="rect-card" id="val-accessibility">
+                            <h3>Accessibility</h3>
+                            <p>Making resources easily available to all community members — clear info, multiple contact options, and in-person help when needed.</p>
+                        </div>
+                        <div class="rect-card" id="val-empowerment">
+                            <h3>Empowerment</h3>
+                            <p>Providing tools and information so people and organizations can solve problems and grow stronger.</p>
+                        </div>
+                        <div class="rect-card" id="val-inclusivity">
+                            <h3>Inclusivity</h3>
+                            <p>Ensuring services and outreach are welcoming and accessible to everyone in our community.</p>
+                        </div>
+                        <!-- Rectangular photo slider under the Values column -->
+                        <div class="values-photo-slider" aria-label="Community photos slider">
+                            <div class="slider-viewport">
+                                <div class="slide active"><div class="slide-img placeholder-img" data-src=""></div></div>
+                                <div class="slide"><div class="slide-img placeholder-img" data-src=""></div></div>
+                                <div class="slide"><div class="slide-img placeholder-img" data-src=""></div></div>
+                            </div>
+                            <button class="slider-prev" aria-label="Previous">‹</button>
+                            <button class="slider-next" aria-label="Next">›</button>
+                            <div class="slider-dots" role="tablist">
+                                <button class="dot active" data-index="0" aria-label="Slide 1"></button>
+                                <button class="dot" data-index="1" aria-label="Slide 2"></button>
+                                <button class="dot" data-index="2" aria-label="Slide 3"></button>
+                            </div>
+                            <p class="image-caption">Community photos (placeholders)</p>
+                        </div>
+                    </div>
+
+                            <div class="values-right">
+                                <aside class="timeline-panel">
+                                    <header class="timeline-header">
+                                        <h3>Milestones & Timeline</h3>
+                                        <p class="timeline-intro">A compact look at key moments that shaped our growth and impact.</p>
+                                    </header>
+
+                                    <div class="timeline-stats">
+                                        <div class="stat">
+                                            <div class="stat-number">5k+</div>
+                                            <div class="stat-label">Connections</div>
+                                        </div>
+                                        <div class="stat">
+                                            <div class="stat-number">100+</div>
+                                            <div class="stat-label">Partners</div>
+                                        </div>
+                                        <div class="stat">
+                                            <div class="stat-number">50+</div>
+                                            <div class="stat-label">Events</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="timeline-cta">
+                                        <a href="resources.html" class="cta-button">Explore Resources</a>
+                                    </div>
+
+                                    <div class="milestones-inline" aria-labelledby="milestones-heading">
+                                        <h4 id="milestones-heading" class="sr-only">Milestones</h4>
+                                        <div class="milestone-inline">
+                                            <div class="milestone-inline-badge">2019</div>
+                                            <div class="milestone-inline-card">
+                                                <div class="milestone-meta">Q1 — Launch</div>
+                                                <h4>Platform Launch</h4>
+                                                <p>We launched the first directory, connecting local nonprofits and volunteers with residents in need.</p>
+                                            </div>
+                                        </div>
+                                        <div class="milestone-inline">
+                                            <div class="milestone-inline-badge">2020</div>
+                                            <div class="milestone-inline-card">
+                                                <div class="milestone-meta">Q3 — Partnerships</div>
+                                                <h4>Strategic Partnerships</h4>
+                                                <p>Established partnerships with 30+ organizations to expand services and coordinated outreach programs.</p>
+                                            </div>
+                                        </div>
+                                        <div class="milestone-inline">
+                                            <div class="milestone-inline-badge">2022</div>
+                                            <div class="milestone-inline-card">
+                                                <div class="milestone-meta">Q2 — Growth</div>
+                                                <h4>Regional Expansion</h4>
+                                                <p>Expanded our coverage to neighboring regions and added multilingual support for key resources.</p>
+                                            </div>
+                                        </div>
+                                        <div class="milestone-inline">
+                                            <div class="milestone-inline-badge">2024</div>
+                                            <div class="milestone-inline-card">
+                                                <div class="milestone-meta">Q1 — Impact</div>
+                                                <h4>Impact Reporting</h4>
+                                                <p>Launched a reporting dashboard to share impact metrics with partners and funders.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </aside>
+                            </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="team-section">
+        <div class="container">
+            <h2>Our Team</h2>
+            <div class="founder-card rect-card">
+                <div class="founder-photo"></div>
+                <div class="founder-info">
+                    <h3>Sarah Johnson</h3>
+                    <p><strong>Founder & Executive Director</strong></p>
+                    <p>Sarah started the Resource Hub after coordinating local outreach programs and seeing a persistent gap in service awareness. Her leadership focuses on partnerships and inclusive access.</p>
+                    <div class="card-more">
+                        <p>Sarah has 10+ years of experience in community organizing and previously led volunteer networks that distributed resources to families in need. She enjoys connecting neighbors and mentoring local leaders.</p>
+                    </div>
+                    <button class="card-toggle" aria-expanded="false"><span class="arrow">▾</span> Read more</button>
+                </div>
+            </div>
+
+            <div class="team-grid" style="margin-top:1.5rem;">
+                <div class="team-member rect-card flip-card" tabindex="0">
+                    <div class="flip-inner">
+                        <div class="flip-front">
+                            <div class="placeholder-img-circle"></div>
+                            <h3>Michael Lee</h3>
+                            <p>Community Outreach</p>
+                        </div>
+                        <div class="flip-back">
+                            <h3>About Michael</h3>
+                            <p>Michael coordinates volunteer events and builds relationships with neighborhood groups.</p>
+                            <p><a href="#" class="link-on-dark">Read more</a></p>
+                        </div>
+                    </div>
+                    <button class="card-toggle" aria-expanded="false"><span class="arrow">▾</span> Read more</button>
+                </div>
+
+                <div class="team-member rect-card flip-card" tabindex="0">
+                    <div class="flip-inner">
+                        <div class="flip-front">
+                            <div class="placeholder-img-circle"></div>
+                            <h3>Elena Rodriguez</h3>
+                            <p>Resource Coordinator</p>
+                        </div>
+                        <div class="flip-back">
+                            <h3>About Elena</h3>
+                            <p>Elena curates and verifies listings, and works directly with partner organizations.</p>
+                            <p><a href="#" class="link-on-dark">Read more</a></p>
+                        </div>
+                    </div>
+                    <button class="card-toggle" aria-expanded="false"><span class="arrow">▾</span> Read more</button>
+                </div>
+
+                <div class="team-member rect-card flip-card" tabindex="0">
+                    <div class="flip-inner">
+                        <div class="flip-front">
+                            <div class="placeholder-img-circle"></div>
+                            <h3>Priya Patel</h3>
+                            <p>Data & Impact</p>
+                        </div>
+                        <div class="flip-back">
+                            <h3>About Priya</h3>
+                            <p>Priya analyzes service usage and reports outcomes to partners and funders.</p>
+                            <p><a href="#" class="link-on-dark">Read more</a></p>
+                        </div>
+                    </div>
+                    <button class="card-toggle" aria-expanded="false"><span class="arrow">▾</span> Read more</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <div class="container">
+            <h2>What Our Community Says</h2>
+            <div class="testimonials-slider">
+                <div class="testimonial-track">
+                    <div class="testimonial-card">
+                        <div class="user-info">
+                            <div class="user-avatar">
+                                <div class="placeholder-img-circle"></div>
+                            </div>
+                            <div class="user-details">
+                                <h3>Sarah Mitchell</h3>
+                                <p>Community Member</p>
+                            </div>
+                        </div>
+                        <p class="review-text">"The Resource Hub has connected me with amazing local services that I didn't even know existed."</p>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="user-info">
+                            <div class="user-avatar">
+                                <div class="placeholder-img-circle"></div>
+                            </div>
+                            <div class="user-details">
+                                <h3>Michael Chen</h3>
+                                <p>Community Volunteer</p>
+                            </div>
+                        </div>
+                        <p class="review-text">"This platform makes it so easy to find and connect with local support services."</p>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="user-info">
+                            <div class="user-avatar">
+                                <div class="placeholder-img-circle"></div>
+                            </div>
+                            <div class="user-details">
+                                <h3>Emily Rodriguez</h3>
+                                <p>Local Organization Leader</p>
+                            </div>
+                        </div>
+                        <p class="review-text">"We've reached so many more people in need since joining the Resource Hub."</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div>
+                <h3>Community Resource Hub</h3>
+                <p>Connecting our community with essential resources</p>
+            </div>
+            <div>
+                <h4>Navigation</h4>
+                <p><a href="index.html">Home</a></p>
+                <p><a href="story.html">Our Story</a></p>
+                <p><a href="resources.html">Resources</a></p>
+                <p><a href="contactus.html">Contact</a></p>
+            </div>
+            <div>
+                <h4>Contact Info</h4>
+                <p>123 Community Street</p>
+                <p>Local City, ST 12345</p>
+                <p>contact@resourcehub.org</p>
+            </div>
+        </div>
+    </footer>
+    <script>
+    // Card interactions: rect-cards expand inline, flip-cards flip
+    (function(){
+        // clicking a rect-card toggles .open which reveals .card-more
+        var rects = document.querySelectorAll('.rect-card');
+        rects.forEach(function(r){
+            r.addEventListener('click', function(e){
+                // if click originated from the card-toggle button or inside a flip-card, ignore here
+                if(e.target.closest('.card-toggle')) return;
+                if(e.target.closest('.flip-card')) return;
+                r.classList.toggle('open');
+            });
+        });
+
+        // card-toggle buttons (arrow + text)
+        var toggles = document.querySelectorAll('.card-toggle');
+        toggles.forEach(function(t){
+            t.addEventListener('click', function(e){
+                e.stopPropagation();
+                var parent = t.closest('.rect-card');
+                if(!parent) return;
+                // if this is also a flip-card, flip instead of expanding
+                if(parent.classList.contains('flip-card')){
+                    parent.classList.toggle('flipped');
+                    return;
+                }
+                var isOpen = parent.classList.toggle('open');
+                t.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+            });
+        });
+
+        // Flip cards: click or keypress toggles
+        var flipCards = document.querySelectorAll('.flip-card');
+        flipCards.forEach(function(card){
+            card.addEventListener('click', function(e){
+                card.classList.toggle('flipped');
+            });
+            card.addEventListener('keydown', function(e){
+                if(e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    card.classList.toggle('flipped');
+                }
+            });
+        });
+
+        // Values timeline: toggles
+        var vtToggles = document.querySelectorAll('.values-timeline .card-toggle');
+        vtToggles.forEach(function(t){
+            t.addEventListener('click', function(e){
+                e.stopPropagation();
+                var card = t.closest('.rect-card');
+                if(!card) return;
+                var isOpen = card.classList.toggle('open');
+                t.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+                var a = t.querySelector('.arrow'); if(a) a.textContent = isOpen ? '▴' : '▾';
+            });
+        });
+        document.querySelectorAll('.values-timeline .rect-card').forEach(function(card){
+            card.addEventListener('click', function(e){
+                if(e.target.closest('.card-toggle')) return;
+                var isOpen = card.classList.toggle('open');
+                var t = card.querySelector('.card-toggle');
+                if(t) { t.setAttribute('aria-expanded', isOpen ? 'true' : 'false'); var a = t.querySelector('.arrow'); if(a) a.textContent = isOpen ? '▴' : '▾'; }
+            });
+            card.addEventListener('keydown', function(e){ if(e.key==='Enter' || e.key===' ') { e.preventDefault(); card.click(); } });
+        });
+    })();
+    
+    // Simple slider for values photo slider
+    (function(){
+        var slider = document.querySelector('.values-photo-slider');
+        if(!slider) return;
+        var slides = slider.querySelectorAll('.slide');
+        var dots = slider.querySelectorAll('.dot');
+        var prev = slider.querySelector('.slider-prev');
+        var next = slider.querySelector('.slider-next');
+        var current = 0;
+        var interval = null;
+
+        function show(n){
+            slides.forEach(function(s,i){ s.classList.toggle('active', i===n); });
+            dots.forEach(function(d,i){ d.classList.toggle('active', i===n); });
+            current = n;
+        }
+
+        function nextSlide(){ show((current+1) % slides.length); }
+        function prevSlide(){ show((current-1 + slides.length) % slides.length); }
+
+        next.addEventListener('click', function(e){ e.preventDefault(); stop(); nextSlide(); start(); });
+        prev.addEventListener('click', function(e){ e.preventDefault(); stop(); prevSlide(); start(); });
+        dots.forEach(function(d){ d.addEventListener('click', function(){ stop(); show(parseInt(d.dataset.index,10)); start(); }); });
+
+        function start(){ interval = setInterval(nextSlide, 3500); }
+        function stop(){ if(interval) { clearInterval(interval); interval = null; } }
+
+        // start autoplay
+        show(0);
+        start();
+
+        // pause on hover
+        slider.addEventListener('mouseenter', stop);
+        slider.addEventListener('mouseleave', start);
+    })();
+    </script>
+    })();
+    </script>
+
+    <script>
+    // enhance nav: set active link based on current path and add ARIA role
+    (function(){
+        try{
+            var nav = document.querySelector('.nav-links');
+            if(nav){ nav.setAttribute('role','navigation'); nav.setAttribute('aria-label','Main'); }
+            var links = document.querySelectorAll('.nav-links a');
+            var path = location.pathname.split('/').pop() || 'index.html';
+            links.forEach(function(a){
+                a.classList.toggle('active', a.getAttribute('href') === path || (a.getAttribute('href')==='./index.html' && path===''));
+                a.addEventListener('keydown', function(e){ if(e.key==='Enter'){ a.click(); } });
+            });
+        }catch(e){}
+    })();
+    </script>
+    <script>
+    // mobile nav toggle
+    (function(){
+        var btn = document.querySelector('.nav-toggle');
+        var nav = document.querySelector('.nav-links');
+        if(!btn || !nav) return;
+        btn.addEventListener('click', function(){
+            var open = nav.classList.toggle('open');
+            btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        });
+    })();
+    </script>
+    <script src="scripts.js"></script>
+</body>
+</html>

@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Influenca</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #f5f8fa;
+        }
+
+        /* Page-specific styles continue below (hero, layout, form, etc.) */
+
+        .hero {
+            text-align: center;
+            padding: 4rem 1rem;
+            background-color: #233552;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            color: #ffffff;
+        }
+
+        .hero p {
+            color: #b4c5e4;
+            margin-bottom: 2rem;
+        }
+
+        .decorative-shapes {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 1rem;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+        }
+
+        .contact-form {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background-color: #1e3d59;
+            color: #fff;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+        }
+
+        .submit-btn:hover {
+            background-color: #2b5278;
+        }
+
+        .newsletter {
+            background: #1a2942;
+            padding: 2rem;
+            border-radius: 10px;
+            color: #fff;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 4rem;
+            width: 100%;
+            flex-wrap: wrap;
+        }
+
+        /* make the contact-info span the full grid columns so it can use the full width */
+        .container > .contact-info { grid-column: 1 / -1; }
+
+        .info-card {
+            background: #fff;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            /* card sizing: on wide screens we'll make three equal columns; on small screens they can wrap */
+            flex: 1 1 0%;
+            min-width: 180px;
+            max-width: none;
+        }
+
+        /* Desktop: force a single centered row of three equal cards */
+        @media (min-width: 900px) {
+            .contact-info { flex-wrap: nowrap; }
+            .info-card { flex: 0 1 calc((100% - 48px) / 3); }
+        }
+        /* Mobile: stack cards */
+        @media (max-width: 899px) {
+            .info-card { flex: 1 1 100%; }
+        }
+
+        .map {
+            width: 100%;
+            height: 400px;
+            border-radius: 10px;
+            margin-top: 4rem;
+        }
+
+        footer {
+            background: #1a2942;
+            color: #fff;
+            padding: 3rem 5%;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        /* Using global styles from styles.css for testimonials (animation, layout, pause-on-hover). */
+    </style>
+    <style>
+        /* Page-local mobile overrides to ensure contact page stacks and doesn't overflow.
+           These override the earlier inline rules when the viewport is narrow. */
+        @media (max-width: 900px) {
+            .container { display: block !important; grid-template-columns: none !important; padding-left: 0.75rem !important; padding-right: 0.75rem !important; }
+            .container > .contact-form, .container > .newsletter, .container > .contact-info { width: 100% !important; box-sizing: border-box; }
+            .decorative-shapes { display: none !important; }
+            body.contact-page .hero { padding: 2rem 1rem !important; }
+            body.contact-page .map { width: 100% !important; max-width: 100% !important; height: 280px !important; margin: 0 !important; box-sizing: border-box !important; }
+            iframe.map, .map { display: block !important; max-width: 100% !important; }
+            .contact-info { gap: 12px !important; padding-left: 0 !important; padding-right: 0 !important; flex-direction: column !important; align-items: stretch !important; }
+            .info-card { min-width: 0 !important; width: 100% !important; }
+        }
+    </style>
+    <style>
+        /* Very small-screen tweaks to improve visual density and readability */
+        @media (max-width: 520px) {
+            body.contact-page .hero { padding: 1.25rem 0.75rem !important; }
+            body.contact-page .hero h1 { font-size: 1.6rem !important; line-height: 1.2 !important; margin-bottom: .5rem !important; }
+            body.contact-page .hero p { font-size: 0.95rem !important; margin-bottom: .75rem !important; max-width: 100% !important; }
+
+            .container { padding-left: .6rem !important; padding-right: .6rem !important; }
+
+            .contact-form { padding: 1rem !important; border-radius: 8px !important; }
+            .contact-form .form-group { margin-bottom: .75rem !important; }
+            .contact-form input, .contact-form textarea { padding: .65rem !important; font-size: .95rem !important; border-radius: 8px !important; }
+
+            .newsletter { margin-top: 0.85rem !important; padding: 1rem !important; border-radius: 8px !important; }
+
+            .contact-info { gap: 10px !important; }
+            .info-card { padding: .85rem !important; font-size: .95rem !important; }
+
+            /* Make buttons less wide visually and easier to tap */
+            .submit-btn, .cta-button { padding: .65rem 1rem !important; font-size: .95rem !important; }
+
+            /* Reduce hero decorative shapes footprint */
+            .decorative-shapes { display: none !important; }
+        }
+    </style>
+</head>
+<body class="contact-page">
+    <header class="header">
+        <a href="index.html" class="logo">Community Resource Hub</a>
+        <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false"><span class="bar"></span><span class="bar"></span><span class="bar"></span></button>
+        <nav class="nav-links">
+            <a href="./index.html">Home</a>
+            <a href="./story.html">Our Story</a>
+            <a href="./mission.html">Our Mission</a>
+            <a href="./resources.html">Resource Directory</a>
+            <a href="./events.html">Events</a>
+            <a href="./submit.html">Submit Resource</a>
+            <a href="./contactus.html">Contact</a>
+            <a href="./login.html">Login</a>
+        </nav>
+    </header>
+
+    <section class="hero has-header-gap">
+        <div class="decorative-shapes"></div>
+    <h1 class="reveal">Contact Us</h1>
+    <p class="reveal" data-reveal-delay="80">We're here to help — reach out with questions, suggestions, or resource updates.</p>
+    </section>
+
+    <div class="container">
+        <div class="contact-form reveal" data-reveal-delay="90">
+            <form>
+                <div class="form-group">
+                    <input type="text" placeholder="Name">
+                </div>
+                <div class="form-group">
+                    <input type="email" placeholder="Email">
+                </div>
+                <div class="form-group">
+                    <input type="tel" placeholder="Phone">
+                </div>
+                <div class="form-group">
+                    <textarea placeholder="Message"></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Submit Button</button>
+            </form>
+        </div>
+
+        <div class="newsletter reveal" data-reveal-delay="140">
+            <h3>Our Newsletter</h3>
+            <p>Get monthly updates about community resources, events, and volunteer opportunities.</p>
+            <div class="form-group">
+                <input type="email" placeholder="Email">
+            </div>
+            <button type="submit" class="submit-btn">Submit Button</button>
+        </div>
+    </div>
+
+    <div class="container">
+            <div class="contact-info">
+            <div class="info-card reveal" data-reveal-delay="120">
+                <h3>(+678) 765 565</h3>
+                <p>Call our community support line for quick assistance and referrals.</p>
+            </div>
+            <div class="info-card reveal" data-reveal-delay="160">
+                <h3>mail@resourcehub.org</h3>
+                <p>Email our team for general inquiries and partnership requests.</p>
+            </div>
+            <div class="info-card reveal" data-reveal-delay="200">
+                <h3>123 Community Street</h3>
+                <p>Visit our office for in-person support during business hours.</p>
+            </div>
+        </div>
+    </div>
+
+    <section class="map-section">
+        <div class="container">
+            <iframe class="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d9931.956632502143!2d-0.1246254!3d51.5007292!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487604b900d26973%3A0x4291f3172409ea92!2sLondon%20Eye!5e0!3m2!1sen!2suk!4v1635444334581!5m2!1sen!2suk" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+    </section>
+
+    <!-- Testimonials removed; map placed here instead. -->
+
+    <footer>
+        <div class="footer-content">
+            <div>
+                <h3>Community Resource Hub</h3>
+                <p>Connecting our community with essential resources</p>
+            </div>
+            <div>
+                <h4>Navigation</h4>
+                <p><a href="index.html">Home</a></p>
+                <p><a href="story.html">Our Story</a></p>
+                <p><a href="resources.html">Resources</a></p>
+                <p><a href="contactus.html">Contact</a></p>
+            </div>
+            <div>
+                <h4>Contact Info</h4>
+                <p>123 Community Street</p>
+                <p>Local City, ST 12345</p>
+                <p>contact@resourcehub.org</p>
+            </div>
+        </div>
+        </footer>
+
+        <script>
+        // enhance nav: set active link based on current path and add ARIA role
+        (function(){
+            try{
+                var nav = document.querySelector('.nav-links');
+                if(nav){ nav.setAttribute('role','navigation'); nav.setAttribute('aria-label','Main'); }
+                var links = document.querySelectorAll('.nav-links a');
+                var path = location.pathname.split('/').pop() || 'index.html';
+                links.forEach(function(a){
+                    a.classList.toggle('active', a.getAttribute('href') === path || (a.getAttribute('href')==='./index.html' && path===''));
+                    a.addEventListener('keydown', function(e){ if(e.key==='Enter'){ a.click(); } });
+                });
+            }catch(e){}
+        })();
+        </script>
+        <script>
+        // mobile nav toggle
+        (function(){
+            var btn = document.querySelector('.nav-toggle');
+            var nav = document.querySelector('.nav-links');
+            if(!btn || !nav) return;
+            btn.addEventListener('click', function(){
+                var open = nav.classList.toggle('open');
+                btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+            });
+        })();
+        </script>
+        <script src="scripts.js"></script>
+    </body>
+    </html>

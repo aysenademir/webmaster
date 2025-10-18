@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit Resource - Community Resource Hub</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Submit page tweaks: larger hero, softer form inputs */
+        .page-hero { min-height: 260px; }
+        .page-hero .hero-content { padding-top: 1.5rem; }
+        .contact-form input[type="text"],
+        .contact-form input[type="email"],
+        .contact-form input[type="tel"],
+        .contact-form input[type="url"],
+        .contact-form select,
+        .contact-form textarea {
+            border-radius: 12px;
+            border: 1px solid rgba(20,30,40,0.06);
+            background: #fbfdff;
+            padding: 0.85rem 1rem;
+            box-shadow: none;
+            width: 100%;
+            font-size: 1rem;
+        }
+        .contact-form label { display:block; margin-bottom:0.35rem; color:var(--text-muted); }
+        .contact-form .form-group { margin-bottom: 1rem; }
+        .contact-form { padding: 1.5rem; }
+        /* Make the hero title slightly smaller on this page to fit the flow */
+        .hero-title { font-size: 2rem; }
+    </style>
+</head>
+<body class="submit-page">
+    <header class="header">
+        <a href="index.html" class="logo">Community Resource Hub</a>
+        <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false"><span class="bar"></span><span class="bar"></span><span class="bar"></span></button>
+        <nav class="nav-links">
+            <a href="./index.html" class="active">Home</a>
+            <a href="./story.html">Our Story</a>
+            <a href="./mission.html">Our Mission</a>
+            <a href="./resources.html">Resource Directory</a>
+            <a href="./events.html">Events</a>
+            <a href="./submit.html">Submit Resource</a>
+            <a href="./contactus.html">Contact</a>
+            <a href="./login.html">Login</a>
+        </nav>
+    </header>
+
+    <section class="page-hero has-header-gap">
+        <div class="hero-background"><div class="placeholder-img"></div></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="hero-title reveal">Submit a Resource</h1>
+            <p class="hero-sub reveal" data-reveal-delay="80">Help your neighbors find the right support — share a resource and we'll review it.</p>
+        </div>
+    </section>
+
+    <section class="container">
+        <div class="contact-form rect-card reveal" data-reveal-delay="120" style="margin-top:1.5rem;">
+            <form id="submitForm">
+                <div class="form-group">
+                    <label for="submitterName">Your Full Name</label>
+                    <input type="text" id="submitterName" name="submitterName" required>
+                </div>
+                <div class="form-group">
+                    <label for="submitterOrg">Organization (optional)</label>
+                    <input type="text" id="submitterOrg" name="submitterOrg">
+                </div>
+                <div class="form-group">
+                    <label for="contactPhone">Phone (optional)</label>
+                    <input type="tel" id="contactPhone" name="contactPhone">
+                </div>
+                <div class="form-group">
+                    <label for="resourceName">Resource / Service Name</label>
+                    <input type="text" id="resourceName" name="resourceName" required>
+                </div>
+                <div class="form-group">
+                    <label for="resourceWebsite">Website (optional)</label>
+                    <input type="url" id="resourceWebsite" name="resourceWebsite" placeholder="https://example.org">
+                </div>
+                <div class="form-group">
+                    <label for="resourceCategory">Category</label>
+                    <select id="resourceCategory" name="resourceCategory" required>
+                        <option value="">Choose a category</option>
+                        <option value="health">Healthcare</option>
+                        <option value="education">Education</option>
+                        <option value="housing">Housing</option>
+                        <option value="food">Food Assistance</option>
+                        <option value="employment">Employment</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="resourceLocation">Location</label>
+                    <select id="resourceLocation" name="resourceLocation" required>
+                        <option value="">Choose a location</option>
+                        <option value="north">North</option>
+                        <option value="south">South</option>
+                        <option value="east">East</option>
+                        <option value="west">West</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="resourceDesc">Short Description</label>
+                    <textarea id="resourceDesc" name="resourceDesc" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="contactEmail">Contact Email</label>
+                    <input type="email" id="contactEmail" name="contactEmail" required>
+                </div>
+                <div style="text-align:right;margin-top:0.5rem;"><button type="submit" class="cta-button">Submit Resource</button></div>
+            </form>
+        </div>
+
+        <div id="submitMessage" class="alert alert-info" style="display:none;margin-top:1.5rem;">
+            <h2>Thank you — your submission is under review</h2>
+            <p>Thank you for your submission. We will review this entry and get back to you soon if we need more information.</p>
+            <p>If you provided an email, we'll contact you at the address you provided.</p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div>
+                <h3>Community Resource Hub</h3>
+                <p>Connecting our community with essential resources</p>
+            </div>
+            <div>
+                <h4>Navigation</h4>
+                <p><a href="index.html">Home</a></p>
+                <p><a href="about.html">About</a></p>
+                <p><a href="services.html">Services</a></p>
+                <p><a href="contactus.html">Contact</a></p>
+            </div>
+            <div>
+                <h4>Contact Info</h4>
+                <p>123 Community Street</p>
+                <p>Local City, ST 12345</p>
+                <p>contact@resourcehub.org</p>
+            </div>
+        </div>
+    </footer>
+    <script>
+    // enhance nav: set active link based on current path and add ARIA role
+    (function(){
+        try{
+            var nav = document.querySelector('.nav-links');
+            if(nav){ nav.setAttribute('role','navigation'); nav.setAttribute('aria-label','Main'); }
+            var links = document.querySelectorAll('.nav-links a');
+            var path = location.pathname.split('/').pop() || 'index.html';
+            links.forEach(function(a){
+                a.classList.toggle('active', a.getAttribute('href') === path || (a.getAttribute('href')==='./index.html' && path===''));
+                a.addEventListener('keydown', function(e){ if(e.key==='Enter'){ a.click(); } });
+            });
+        }catch(e){}
+    })();
+    </script>
+    <script>
+    // Require demo login via localStorage before submitting. If not logged in, redirect to login page.
+    (function(){
+        try {
+            var loggedIn = localStorage.getItem('crh_logged_in') === 'true';
+            if(!loggedIn) {
+                // Redirect to login and request a return back to this page
+                var returnUrl = encodeURIComponent('submit.html');
+                window.location.href = 'login.html?return=' + returnUrl;
+            }
+        } catch(e) {}
+    })();
+
+    (function(){
+        var form = document.getElementById('submitForm');
+        var msg = document.getElementById('submitMessage');
+        var btn = form.querySelector('button[type="submit"]');
+
+        function validEmail(email){
+            return /\S+@\S+\.\S+/.test(email);
+        }
+
+        form.addEventListener('submit', function(e){
+            e.preventDefault();
+            // basic client-side validation
+            var required = ['submitterName','resourceName','resourceCategory','resourceLocation','resourceDesc','contactEmail'];
+            for(var i=0;i<required.length;i++){
+                var el = document.getElementById(required[i]);
+                if(!el || !el.value || el.value.trim() === ''){
+                    el && el.focus();
+                    alert('Please fill out the required fields.');
+                    return;
+                }
+            }
+            var email = document.getElementById('contactEmail').value || '';
+            if(!validEmail(email)){
+                alert('Please enter a valid email address.');
+                document.getElementById('contactEmail').focus();
+                return;
+            }
+
+            // Disable the button to avoid duplicate submits
+            btn.disabled = true;
+            btn.textContent = 'Submitting...';
+
+            // Simulate async submit (demo) then show message
+            setTimeout(function(){
+                form.style.display = 'none';
+                msg.style.display = 'block';
+                window.scrollTo({ top: msg.getBoundingClientRect().top + window.scrollY - 80, behavior: 'smooth' });
+            }, 700);
+        });
+    })();
+    </script>
+    <script>
+    // mobile nav toggle
+    (function(){
+        var btn = document.querySelector('.nav-toggle');
+        var nav = document.querySelector('.nav-links');
+        if(!btn || !nav) return;
+        btn.addEventListener('click', function(){
+            var open = nav.classList.toggle('open');
+            btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        });
+    })();
+    </script>
+    <script src="scripts.js"></script>
+</body>
+</html>
