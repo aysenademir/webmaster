@@ -19,8 +19,9 @@ html, body {
     padding: 4rem 1rem;
 }
 
+/* Header: fixed position, flex layout for logo (left) and nav (right) */
 .header {
-    position: fixed; /* fixed */
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
@@ -29,15 +30,14 @@ html, body {
     justify-content: space-between;
     align-items: center;
     z-index: 1000;
-    /* bg */
     background: rgba(37,74,110,0.72);
-    /* backdrop blur */
     -webkit-backdrop-filter: blur(6px);
     backdrop-filter: blur(6px);
     border-bottom: 1px solid rgba(255,255,255,0.06);
     transition: background-color 220ms ease, padding 180ms ease;
 }
 
+/* Logo: prevent wrapping and keep on single line */
 .logo {
     font-size: 2rem;
     font-weight: bold;
@@ -45,11 +45,17 @@ html, body {
     text-decoration: none;
     letter-spacing: 1px;
     margin-right: 2rem;
+    white-space: nowrap; /* keep logo text on one line */
+    flex-shrink: 0; /* prevent logo from shrinking when space is tight */
 }
 
+/* Nav links: horizontal row with even spacing, no wrapping */
 .nav-links {
     display: flex;
     gap: 2rem;
+    align-items: center;
+    flex-wrap: nowrap; /* keep all links on one line */
+    position: relative;
 }
 
 .nav-links a {
@@ -59,6 +65,62 @@ html, body {
     transition: color 0.3s;
     text-transform: uppercase;
     letter-spacing: 1px;
+    white-space: nowrap; /* prevent individual link text from wrapping */
+}
+
+/* More button for overflow menu */
+.more-menu-btn {
+    display: none; /* hidden until needed */
+    text-decoration: none;
+    color: white;
+    font-size: 1rem;
+    transition: color 0.3s;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    white-space: nowrap;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    padding: 0;
+    position: relative;
+}
+
+.more-menu-btn:hover {
+    color: #b4c5e4;
+}
+
+/* Dropdown for overflow items */
+.more-dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: rgba(37,74,110,0.96);
+    border-radius: 8px;
+    margin-top: 0.5rem;
+    min-width: 200px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+    z-index: 1002;
+}
+
+.more-dropdown.open {
+    display: block;
+}
+
+.more-dropdown a {
+    display: block;
+    padding: 12px 20px;
+    text-transform: none;
+    font-size: 0.95rem;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.more-dropdown a:last-child {
+    border-bottom: none;
+}
+
+.more-dropdown a:hover {
+    background: rgba(255,255,255,0.08);
 }
 
 .contact-info {
@@ -424,6 +486,83 @@ html, body {
     .mission-slide, .mission-slide.prev, .mission-slide.next { position: relative; transform: none; width: 100%; max-width: 100%; opacity: 1; filter: none; margin-bottom: .75rem; }
     .mission-slider .slider-controls { position: absolute; top: auto; bottom: 8px; transform: none; padding: 0 8px; }
     .mission-dots { position: static; transform: none; margin-top: .5rem; }
+}
+
+/* Small screen: full hamburger menu */
+@media (max-width: 768px) {
+    /* Header: relative position so dropdown sits below; compact padding */
+    .header { 
+        position: relative; 
+        padding: 0.75rem 1rem; 
+    }
+
+    /* Logo: smaller on mobile to leave room for hamburger */
+    .logo { 
+        font-size: 1.25rem; 
+        white-space: nowrap; /* still no wrapping */
+    }
+
+    /* Hamburger button: show on mobile with accessible icon */
+    .nav-toggle { 
+        display: inline-flex; 
+        align-items: center; 
+        justify-content: center; 
+        font-size: 24px; 
+        color: #fff; 
+        background: transparent; 
+        border: none; 
+        width: 44px; 
+        height: 44px; 
+        border-radius: 8px; 
+        cursor: pointer;
+    }
+    .nav-toggle .bar { display: none; } /* hide default bars, show hamburger icon */
+    .nav-toggle::before { content: '☰'; }
+
+    /* Nav links: hidden by default, slide down when open
+       Use max-height for smooth animation (JS sets exact height) */
+    .nav-links {
+        display: flex;
+        flex-direction: column; /* stack links vertically */
+        position: absolute;
+        top: 100%; /* sit right below header */
+        left: 0;
+        right: 0;
+        background: rgba(37,74,110,0.96); /* match header color */
+        overflow: hidden;
+        max-height: 0; /* collapsed by default */
+        transition: max-height 320ms ease, opacity 220ms ease; /* smooth slide */
+        opacity: 0;
+        z-index: 1001;
+        gap: 0; /* no gap in vertical layout */
+    }
+
+    /* Open state: JS sets max-height; CSS shows opacity */
+    .nav-links.open { 
+        opacity: 1; 
+    }
+
+    /* Nav link styling: large touch targets, full width, clean look */
+    .nav-links a { 
+        display: block; 
+        padding: 16px 20px; /* roomy padding for mobile tapping */
+        color: #fff; 
+        text-transform: none; /* easier to read on mobile */
+        border-radius: 0; 
+        margin: 0; 
+        text-align: left;
+    }
+    .nav-links a:hover, 
+    .nav-links a:focus { 
+        background: rgba(255,255,255,0.08); /* subtle highlight */
+        color: #fff; 
+    }
+    
+    /* Hide more menu on small screens since all items are in hamburger */
+    .more-menu-btn,
+    .more-dropdown {
+        display: none !important;
+    }
 }
 
 .highlight-card .placeholder-img {
