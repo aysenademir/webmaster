@@ -1,11 +1,11 @@
-// Shared site scripts
-// Scroll reveal: add 'in-view' to elements with .reveal when visible
+// Show elements when user scrolls to them
+// Add 'in-view' class when elements with .reveal become visible
 (function(){
     'use strict';
-    // Respect reduced motion preference
+    // Check if user prefers less motion
     var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if(reduce) {
-        // reveal everything immediately
+        // Show everything right away
         document.addEventListener('DOMContentLoaded', function(){
             document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in-view'); });
         });
@@ -19,7 +19,7 @@
                 var delay = el.getAttribute('data-reveal-delay');
                 if(delay){ el.style.transitionDelay = delay + 'ms'; }
                 el.classList.add('in-view');
-                // stagger .reveal-child elements if present
+                // Show child elements with stagger effect
                 var children = el.querySelectorAll && el.querySelectorAll('.reveal-child');
                 if(children && children.length){
                     children.forEach(function(child, i){
@@ -27,7 +27,7 @@
                         child.classList.add('in-view');
                     });
                 }
-                // stop observing once revealed
+                // Stop watching after revealed
                 obs.unobserve(el);
             }
         });
@@ -40,7 +40,9 @@
     if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
 })();
 
-// Responsive nav: overflow items go into "More" dropdown on medium screens, full hamburger on mobile
+// Responsive navigation menu
+// On medium screens: move overflow items to "More" dropdown
+// On mobile: use hamburger menu
 (function(){
     'use strict';
     
@@ -55,9 +57,9 @@
         var moreDropdown = null;
         var isSmallScreen = false;
 
-        // Create "More" button and dropdown
+        // Create "More" button and dropdown menu
         function createMoreMenu(){
-            if(moreBtn) return; // already created
+            if(moreBtn) return; // already made
             
             moreBtn = document.createElement('button');
             moreBtn.className = 'more-menu-btn';
@@ -71,7 +73,7 @@
             moreBtn.appendChild(moreDropdown);
             nav.appendChild(moreBtn);
             
-            // Toggle dropdown on click
+            // Open/close dropdown on click
             moreBtn.addEventListener('click', function(e){
                 e.stopPropagation();
                 var isOpen = moreDropdown.classList.toggle('open');
@@ -85,56 +87,62 @@
             });
         }
 
-        // Check if nav items overflow and move extras to dropdown
+        // Check if nav items fit, move extras to dropdown if needed
         function handleOverflow(){
-            // On very small screens (mobile), use hamburger menu instead
+            // On small screens, use hamburger instead
             var width = window.innerWidth;
             isSmallScreen = width <= 768;
             
             if(isSmallScreen){
-                // Mobile: hide more menu, hamburger handles everything
+                // Hide "More" menu on mobile
                 if(moreBtn) moreBtn.style.display = 'none';
                 return;
             }
 
-            // Desktop/tablet: check for overflow
+            // On bigger screens: check if items fit
             if(!moreBtn) createMoreMenu();
             
-            // Reset: show all links in main nav
+            // Put all links back in main nav first
             navLinks.forEach(function(link){
                 link.style.display = '';
-                nav.insertBefore(link, moreBtn);
+                if(link.parentNode !== nav){
+                    nav.insertBefore(link, moreBtn);
+                }
             });
             moreDropdown.innerHTML = '';
             moreBtn.style.display = 'none';
 
-            // Check if items overflow
-            var headerWidth = header.offsetWidth;
-            var logoWidth = document.querySelector('.logo').offsetWidth;
-            var availableWidth = headerWidth - logoWidth - 100; // 100px buffer
-            
-            var totalWidth = 0;
-            var overflowLinks = [];
-            
-            navLinks.forEach(function(link){
-                totalWidth += link.offsetWidth + 32; // 32px for gap (2rem)
-                if(totalWidth > availableWidth){
-                    overflowLinks.push(link);
-                }
-            });
-
-            // Move overflow items to dropdown
-            if(overflowLinks.length > 0){
-                moreBtn.style.display = 'block';
-                overflowLinks.forEach(function(link){
-                    var clone = link.cloneNode(true);
-                    moreDropdown.appendChild(clone);
-                    link.style.display = 'none';
+            // Wait a bit for layout to update
+            setTimeout(function(){
+                // Check if items overflow
+                var headerWidth = header.offsetWidth;
+                var logoWidth = document.querySelector('.logo') ? document.querySelector('.logo').offsetWidth : 0;
+                var availableWidth = headerWidth - logoWidth - 150; // leave some space
+                
+                var totalWidth = 0;
+                var overflowLinks = [];
+                
+                navLinks.forEach(function(link){
+                    var linkWidth = link.offsetWidth || link.getBoundingClientRect().width;
+                    totalWidth += linkWidth + 32; // add gap space
+                    if(totalWidth > availableWidth){
+                        overflowLinks.push(link);
+                    }
                 });
-            }
+
+                // Move overflow items to dropdown
+                if(overflowLinks.length > 0){
+                    moreBtn.style.display = 'block';
+                    overflowLinks.forEach(function(link){
+                        var clone = link.cloneNode(true);
+                        moreDropdown.appendChild(clone);
+                        link.style.display = 'none';
+                    });
+                }
+            }, 50);
         }
 
-        // Hamburger menu for mobile (existing functionality)
+        // Hamburger menu for mobile phones
         function initMobileNav(){
             if(!hamburger || !nav) return;
 
@@ -143,24 +151,21 @@
             hamburger.setAttribute('aria-expanded', 'false');
 
             function closeNav(){
+                nav.classList.remove('open');
                 nav.style.maxHeight = '0px';
-                nav.style.opacity = '0';
                 hamburger.setAttribute('aria-expanded', 'false');
-                setTimeout(function(){ nav.classList.remove('open'); }, 320);
             }
 
             hamburger.addEventListener('click', function(e){
                 e.preventDefault();
+                e.stopPropagation();
                 var isOpen = nav.classList.contains('open');
                 
                 if(!isOpen){
                     nav.classList.add('open');
-                    var fullHeight = nav.scrollHeight;
-                    nav.style.maxHeight = fullHeight + 'px';
-                    nav.style.opacity = '1';
+                    // Set height to show all links
+                    nav.style.maxHeight = '500px';
                     hamburger.setAttribute('aria-expanded', 'true');
-                    var firstLink = nav.querySelector('a');
-                    if(firstLink) firstLink.focus();
                 } else {
                     closeNav();
                 }
@@ -180,11 +185,11 @@
             });
         }
 
-        // Init
+        // Start everything
         handleOverflow();
         initMobileNav();
 
-        // Re-check on resize
+        // Check again when window size changes
         var resizeTimer;
         window.addEventListener('resize', function(){
             clearTimeout(resizeTimer);

@@ -1,25 +1,34 @@
-/* common */
+/* Reset everything */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* fonts */
+/* Set fonts for whole site */
 html, body {
     font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
     background-color: var(--bg-muted);
-    /* header offset is now opt-in via body.has-header-gap to avoid unwanted empty space */
+    /* Header space is optional - add class to body if needed */
     color: var(--text);
+    min-height: 100vh; /* full screen height */
+    display: flex;
+    flex-direction: column;
 }
 
+/* Make content grow to push footer down */
+body > *:not(footer) {
+    flex-shrink: 0;
+}
+
+/* Main container - centers content */
 .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 4rem 1rem;
 }
 
-/* Header: fixed position, flex layout for logo (left) and nav (right) */
+/* Header - stays at top when scrolling */
 .header {
     position: fixed;
     top: 0;
@@ -37,7 +46,7 @@ html, body {
     transition: background-color 220ms ease, padding 180ms ease;
 }
 
-/* Logo: prevent wrapping and keep on single line */
+/* Logo - keeps text on one line */
 .logo {
     font-size: 2rem;
     font-weight: bold;
@@ -45,16 +54,16 @@ html, body {
     text-decoration: none;
     letter-spacing: 1px;
     margin-right: 2rem;
-    white-space: nowrap; /* keep logo text on one line */
-    flex-shrink: 0; /* prevent logo from shrinking when space is tight */
+    white-space: nowrap; /* no wrapping */
+    flex-shrink: 0; /* don't shrink when tight on space */
 }
 
-/* Nav links: horizontal row with even spacing, no wrapping */
+/* Navigation links - horizontal row */
 .nav-links {
     display: flex;
     gap: 2rem;
     align-items: center;
-    flex-wrap: nowrap; /* keep all links on one line */
+    flex-wrap: nowrap; /* all links stay on one line */
     position: relative;
 }
 
@@ -65,10 +74,10 @@ html, body {
     transition: color 0.3s;
     text-transform: uppercase;
     letter-spacing: 1px;
-    white-space: nowrap; /* prevent individual link text from wrapping */
+    white-space: nowrap; /* no text wrapping */
 }
 
-/* More button for overflow menu */
+/* "More" button for when links don't fit */
 .more-menu-btn {
     display: none; /* hidden until needed */
     text-decoration: none;
@@ -89,7 +98,7 @@ html, body {
     color: #b4c5e4;
 }
 
-/* Dropdown for overflow items */
+/* Dropdown menu for extra items */
 .more-dropdown {
     display: none;
     position: absolute;
@@ -123,6 +132,69 @@ html, body {
     background: rgba(255,255,255,0.08);
 }
 
+/* Tablets - use hamburger menu */
+@media (min-width: 769px) and (max-width: 900px) {
+    /* Show hamburger since buttons won't all fit */
+    .nav-toggle {
+        display: inline-flex !important;
+    }
+    
+    .nav-links {
+        display: flex !important; /* show nav */
+        position: fixed !important;
+        flex-direction: column !important;
+        top: 60px;
+        left: 0;
+        right: 0;
+        max-height: 0 !important;
+        opacity: 1 !important;
+        background: rgba(37,74,110,0.98) !important;
+        transition: max-height 400ms ease;
+    }
+    
+    .nav-links.open {
+        max-height: 500px !important;
+    }
+    
+    /* Don't show More menu, use hamburger */
+    .more-menu-btn,
+    .more-dropdown {
+        display: none !important;
+    }
+}
+
+/* Big tablets - show nav with More button */
+@media (min-width: 901px) and (max-width: 1200px) {
+    .nav-toggle {
+        display: none !important; /* no hamburger */
+    }
+    
+    .nav-links {
+        display: flex !important; /* show nav */
+        position: relative !important;
+        flex-direction: row !important;
+        max-height: none !important;
+        opacity: 1 !important;
+        background: transparent !important;
+        gap: 1.5rem; /* smaller space between links */
+    }
+    
+    .nav-links a {
+        font-size: 0.9rem; /* smaller text */
+    }
+    
+    .more-menu-btn {
+        font-size: 0.9rem; /* same size as links */
+    }
+}
+
+/* Big screens - header stays at top */
+@media (min-width: 901px) {
+    .header {
+        position: fixed !important; /* always fixed */
+    }
+}
+
 .contact-info {
     color: white;
     font-size: 1rem;
@@ -137,14 +209,14 @@ html, body {
     border-bottom: 2px solid #b4c5e4;
 }
 
-/* focus */
+/* When you focus on a link */
 .nav-links a:focus-visible {
     outline: 3px solid rgba(180,197,228,0.25);
     outline-offset: 4px;
     border-radius: 4px;
 }
 
-/* hover */
+/* When you hover over links */
 .nav-links a { transition: color 200ms ease, transform 140ms ease; }
 .nav-links a:hover { transform: translateY(-2px); }
 
@@ -164,15 +236,15 @@ html, body {
     height: 100%;
 }
 
-/* hero */
+/* Big hero section */
 .page-hero {
     position: relative;
     overflow: hidden;
 }
 
-/* hero image */
+/* Hero background image */
 .page-hero {
-    min-height: 520px; /* hero size */
+    min-height: 520px; /* how tall the hero is */
 }
 
 .page-hero .hero-background {
@@ -180,7 +252,7 @@ html, body {
     height: 100%;
     background-image: url('https://via.placeholder.com/2000x900/cccccc/ffffff');
     background-size: cover;
-    background-position: right center; /* position */
+    background-position: right center; /* where the image sits */
     background-repeat: no-repeat;
 }
 
@@ -197,27 +269,27 @@ html, body {
     left: 0;
     width: 100%;
     height: 100%;
-    /* overlay */
+    /* overlay on top of image */
     background: linear-gradient(180deg, rgba(255,255,255,0.72), rgba(234,244,255,0.55));
-    z-index: 0; /* behind */
-    pointer-events: none; /* clicks through */
+    z-index: 0; /* sits behind text */
+    pointer-events: none; /* you can click through it */
 }
 
-/* hero height */
+/* How tall hero is */
 .page-hero { min-height: 420px; position: relative; }
 .page-hero .hero-background .placeholder-img { width:100%; height:100%; display:block; }
 
 .page-hero .hero-content {
-    /* hero center */
+    /* Center the hero text */
     position: absolute;
-    inset: 0; /* inset */
-    z-index: 2; /* above */
+    inset: 0; /* cover whole area */
+    z-index: 2; /* on top of overlay */
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 2rem 1rem; /* padding */
+    padding: 2rem 1rem; /* space around edges */
 }
 
 .slider-container {
@@ -315,14 +387,14 @@ html, body {
     margin-right: auto;
 }
 
-/* Outlined panel around the search area */
+/* Box around search bar */
 .search-panel {
     width: 100%;
     background: #fff;
     border-radius: 12px;
     padding: 1.5rem 1.25rem;
     box-shadow: 0 6px 20px rgba(37,74,110,0.04);
-    border: 2px solid rgba(37,74,110,0.08); /* soft blue outline */
+    border: 2px solid rgba(37,74,110,0.08); /* light blue border */
     display: flex;
     align-items: center;
     gap: 1rem;
@@ -365,7 +437,7 @@ html, body {
     background: #f5f8fa;
 }
 
-/* Resource directory card defaults */
+/* Resource cards */
 .resource-card {
     background: #fff;
     border-radius: 10px;
@@ -394,7 +466,7 @@ html, body {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
-/* Mission carousel (stacked slides, only center clear) */
+/* Mission slider - shows one card at a time */
 .mission-slider { position: relative; width: 100%; max-width: 1100px; margin: 1rem 0; height: 260px; }
 .mission-slider .slide-wrap { position: relative; width: 100%; height: 100%; }
 .mission-slide { position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 300px; max-width: 90%; border-radius: 10px; transition: transform 300ms cubic-bezier(.2,.9,.2,1), opacity 220ms ease, filter 300ms ease; box-shadow: 0 6px 16px rgba(20,30,40,0.06); background: #fff; overflow: hidden; padding: 0; height: 100%; transform-origin: center center; }
@@ -420,11 +492,11 @@ html, body {
     justify-content: space-between;
     align-items: center;
     padding: 0 14px;
-    pointer-events: none; /* allow clicks through except buttons */
+    pointer-events: none; /* clicks go through to cards */
     z-index: 8;
 }
 .mission-slider .slider-controls button {
-    pointer-events: auto; /* buttons remain clickable */
+    pointer-events: auto; /* buttons can still be clicked */
     background: var(--brand-blue);
     color: #fff;
     border: none;
@@ -445,7 +517,7 @@ html, body {
 .mission-dot { width:10px; height:10px; border-radius:50%; background: rgba(26,41,66,0.12); border:none; }
 .mission-dot.active { background: var(--brand-blue); }
 
-/* Enforce center/neighbor sizing on desktop: center slide larger; neighbors and hidden slides shrink */
+/* Big screens - make center slide bigger */
 @media (min-width: 900px) {
     .mission-slide.active {
         transform: translateX(-50%) scale(1.12) !important;
@@ -457,7 +529,7 @@ html, body {
     }
 
     .mission-slide.prev, .mission-slide.next {
-        /* when slides move to neighbor/back state make them noticeably smaller and dimmer */
+        /* side slides are smaller and darker */
         opacity: 0.5 !important;
         filter: brightness(.45) grayscale(.08) !important;
         z-index: 2 !important;
@@ -468,15 +540,15 @@ html, body {
     .mission-slide.prev { transform: translateX(-115%) scale(.86) !important; }
     .mission-slide.next { transform: translateX(30%) scale(.86) !important; }
 
-    /* Hidden slides should shrink further and be non-interactive */
+    /* Hidden slides can't be seen or clicked */
     .mission-slide.hidden { transform: translateX(-50%) scale(.6) !important; opacity: 0 !important; pointer-events: none !important; }
 }
 
-/* No-match banner on resources page when a direct resource isn't found */
+/* Message when search finds nothing */
 .no-match-banner { background: linear-gradient(180deg, rgba(37,74,110,0.04), #fff); border-left: 4px solid rgba(37,74,110,0.18); padding: 1rem 1.25rem; border-radius: 8px; margin-bottom: 1rem; box-shadow: 0 6px 18px rgba(20,30,40,0.04); color: var(--text-strong); }
 .no-match-banner p { margin: 0.25rem 0 0 0; color: var(--text-muted); }
 
-/* Generic alert utilities: use brand-blue tones rather than red/pink */
+/* Alert boxes */
 .alert { padding: 0.85rem 1rem; border-radius: 8px; margin-bottom: 1rem; box-shadow: 0 6px 18px rgba(20,30,40,0.04); }
 .alert-info { background: linear-gradient(180deg, rgba(37,74,110,0.04), #fff); border-left: 4px solid rgba(37,74,110,0.18); color: var(--text-strong); }
 .alert-error { background: linear-gradient(180deg, rgba(30,61,89,0.04), #fff); border-left: 4px solid rgba(30,61,89,0.16); color: var(--text-strong); }
@@ -488,21 +560,31 @@ html, body {
     .mission-dots { position: static; transform: none; margin-top: .5rem; }
 }
 
-/* Small screen: full hamburger menu */
+/* Phone screens - show hamburger menu */
 @media (max-width: 768px) {
-    /* Header: relative position so dropdown sits below; compact padding */
+    /* Header stays at top when scrolling */
     .header { 
-        position: relative; 
-        padding: 0.75rem 1rem; 
+        position: fixed; 
+        top: 0;
+        left: 0;
+        right: 0;
+        padding: 0.75rem 1rem;
+        z-index: 9999;
+        display: flex;
+        flex-wrap: wrap; /* nav can go on next line */
+        background: rgba(37,74,110,0.72); /* same see-through blue */
+        -webkit-backdrop-filter: blur(6px);
+        backdrop-filter: blur(6px);
     }
 
-    /* Logo: smaller on mobile to leave room for hamburger */
+    /* Logo and hamburger on same line */
     .logo { 
-        font-size: 1.25rem; 
-        white-space: nowrap; /* still no wrapping */
+        font-size: 1.1rem; 
+        white-space: nowrap;
+        flex: 1; /* use up extra space */
     }
 
-    /* Hamburger button: show on mobile with accessible icon */
+    /* Hamburger button */
     .nav-toggle { 
         display: inline-flex; 
         align-items: center; 
@@ -515,53 +597,66 @@ html, body {
         height: 44px; 
         border-radius: 8px; 
         cursor: pointer;
+        flex-shrink: 0; /* don't get smaller */
+        z-index: 10000;
     }
-    .nav-toggle .bar { display: none; } /* hide default bars, show hamburger icon */
+    .nav-toggle .bar { display: none; }
     .nav-toggle::before { content: '☰'; }
 
-    /* Nav links: hidden by default, slide down when open
-       Use max-height for smooth animation (JS sets exact height) */
+    /* Dropdown menu slides down */
     .nav-links {
-        display: flex;
-        flex-direction: column; /* stack links vertically */
-        position: absolute;
-        top: 100%; /* sit right below header */
+        display: flex !important; /* always shown */
+        flex-direction: column;
+        position: fixed; /* stays with screen */
+        top: 60px; /* below header */
         left: 0;
         right: 0;
-        background: rgba(37,74,110,0.96); /* match header color */
+        width: 100%; /* full screen width */
+        background: rgba(37,74,110,0.98);
         overflow: hidden;
-        max-height: 0; /* collapsed by default */
-        transition: max-height 320ms ease, opacity 220ms ease; /* smooth slide */
-        opacity: 0;
-        z-index: 1001;
-        gap: 0; /* no gap in vertical layout */
+        max-height: 0; /* starts hidden */
+        transition: max-height 400ms ease;
+        margin: 0;
+        padding: 0;
+        z-index: 9998; /* below button, above page */
     }
 
-    /* Open state: JS sets max-height; CSS shows opacity */
+    /* When menu is open */
     .nav-links.open { 
-        opacity: 1; 
+        max-height: 500px !important; /* tall enough for links */
     }
 
-    /* Nav link styling: large touch targets, full width, clean look */
+    /* How links look */
     .nav-links a { 
         display: block; 
-        padding: 16px 20px; /* roomy padding for mobile tapping */
+        padding: 14px 20px;
         color: #fff; 
-        text-transform: none; /* easier to read on mobile */
-        border-radius: 0; 
-        margin: 0; 
+        text-transform: none;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+        margin: 0;
         text-align: left;
+        background: transparent;
     }
+    
+    .nav-links a:last-child {
+        border-bottom: none;
+    }
+    
     .nav-links a:hover, 
     .nav-links a:focus { 
-        background: rgba(255,255,255,0.08); /* subtle highlight */
+        background: rgba(255,255,255,0.1);
         color: #fff; 
     }
     
-    /* Hide more menu on small screens since all items are in hamburger */
+    /* Hide "More" button on phones */
     .more-menu-btn,
     .more-dropdown {
         display: none !important;
+    }
+    
+    /* Make room for header at top */
+    body {
+        padding-top: 60px !important;
     }
 }
 
@@ -602,29 +697,29 @@ html, body {
     font-weight: bold;
 }
 
-/* Sliding side filters and filter buttons */
+/* Filter sidebar */
 .directory-filters {
-    /* keep the sidebar in the normal page flow so it doesn't overlap content or move on scroll */
+    /* sidebar stays with page, doesn't move when scrolling */
     transition: none;
-    position: relative; /* in-flow sidebar */
+    position: relative; /* normal position */
     left: auto;
     top: auto;
     bottom: auto;
-    width: 260px; /* consistent sidebar width */
+    width: 260px; /* how wide sidebar is */
     background: #f8fbfe;
     padding: 1rem;
-    box-shadow: none; /* avoid raised overlay look */
+    box-shadow: none; /* no shadow */
     overflow: visible;
     opacity: 1;
     z-index: 2;
 }
-/* collapsed state: show only the handle (desktop and mobile) */
+/* When sidebar is closed */
 .directory-filters.collapsed { width: 140px; padding: 0.5rem; overflow: visible; }
 .directory-filters.collapsed .filters-inner { display: none; }
 .directory-filters .filters-handle { display: inline-flex; }
 .directory-filters.open { width: 260px; padding: 1rem; }
 .directory-filters.open .filters-inner { display: flex; }
-/* .directory-filters.open is intentionally not used on desktop; mobile toggling uses transform and opacity directly */
+/* Open state not used on desktop, only mobile */
 .filters-inner { display:flex; flex-direction:column; gap:1rem; opacity: 1; max-height: none; overflow: visible; transition: none; }
 .filter-block h4 { margin:0 0 .5rem 0; color:#1a2942; cursor: pointer; position: relative; }
 .filter-block h4::after { content: '\25BC'; position: absolute; right: 0; top: 0; transform: translateY(2px); font-size: 0.8rem; color: #556770; transition: transform 200ms ease; }
@@ -635,25 +730,25 @@ html, body {
 .filter-btn.active { background:#1e3d59; color:#fff; }
 
 @media (min-width: 900px) {
-    /* On wide screens lay out the container as two columns: sidebar + content. Sidebar stays in-flow and does not move on scroll. */
+    /* Big screens - sidebar and content side by side */
     .resource-directory > .container { display: flex; align-items: flex-start; gap: 2rem; }
     .directory-filters { position: relative; width: 260px; box-shadow: none; top: auto; height: auto; }
-    /* content column grows to fill remaining space */
+    /* Content takes up rest of space */
     .resources-grid { margin-left: 0; flex: 1; display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
 }
 
-/* removed sticky behavior - sidebar remains in normal flow */
+/* Sidebar stays in normal flow */
 @media (max-width: 899px) {
-    /* On narrow screens hide filters by default and toggle opens */
+    /* Small screens - hide filters until opened */
     .directory-filters { transform: translateX(-340px); opacity: 0; width: 320px; top: 80px; }
     .directory-filters.open { transform: translateX(0); opacity: 1; }
     .filters-inner { max-height: 100vh; }
     .resources-grid { margin-left: 0; }
-    /* show the handle on mobile so users can open the panel */
+    /* Show open button on mobile */
     .directory-filters .filters-handle { display: inline-flex; }
 }
 
-/* Resource card image placeholder and hover */
+/* Card images and hover effect */
 .placeholder-img-square {
     width: 100%;
     height: 160px;
@@ -663,7 +758,7 @@ html, body {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 120px; /* wider rectangle */
+    width: 120px; /* button width */
     height: 44px;
     padding: 0 .75rem;
     border-radius: 8px;
@@ -679,7 +774,7 @@ html, body {
 .resource-card { transition: transform 200ms ease, box-shadow 200ms ease; }
 .resource-card:hover { transform: scale(1.03); box-shadow: 0 10px 25px rgba(0,0,0,0.12); z-index: 2; }
 
-/* Read-more collapsible section */
+/* Show/hide more text */
 .more-content {
     max-height: 0;
     overflow: hidden;
@@ -687,7 +782,7 @@ html, body {
     opacity: 0;
 }
 .more-content.open {
-    max-height: 600px; /* generous */
+    max-height: 600px; /* big enough for text */
     opacity: 1;
 }
 .read-more-btn {
@@ -701,7 +796,7 @@ html, body {
     cursor: pointer;
 }
 
-/* Flip card for team */
+/* Team card that flips */
 .flip-card {
     perspective: 1000px;
 }
@@ -729,7 +824,7 @@ html, body {
     transform: rotateY(180deg);
 }
 
-/* Founder large card */
+/* Big founder card */
 .founder-card { display: grid; grid-template-columns: 220px 1fr; gap: 1rem; align-items: center; }
 .founder-photo { width: 220px; height: 220px; border-radius: 8px; background: #e6e9ec; }
 .founder-info h3 { margin: 0 0 .25rem 0; }
@@ -742,17 +837,17 @@ html, body {
     .founder-photo { width: 100%; height: 220px; }
 }
 
-/* Brand color and rectangular card style used across story page */
+/* Colors used on story page */
 :root {
-    --brand-blue: #254a6e; /* slightly different blue for headings and accents */
-    --text: #13283f;        /* default body text - dark navy */
-    --text-strong: #0f1f33; /* stronger navy for headings when needed */
-    --text-muted: #4b6b88;  /* muted blue for secondary text */
-    --text-soft: #6c89a3;   /* soft blue for captions and meta */
+    --brand-blue: #254a6e; /* blue for headings */
+    --text: #13283f;        /* normal text color */
+    --text-strong: #0f1f33; /* darker text for headings */
+    --text-muted: #4b6b88;  /* lighter text */
+    --text-soft: #6c89a3;   /* even lighter for captions */
     --bg-muted: #f5f8fa;
 }
 
-/* Global typographic tones (keeps header/footer overrides intact) */
+/* Text colors for whole site */
 body { color: var(--text); }
 h1,h2,h3,h4,h5,h6 { color: var(--text-strong); }
 p, li, span, label { color: var(--text-muted); }
@@ -760,7 +855,7 @@ p, li, span, label { color: var(--text-muted); }
 a { color: var(--brand-blue); }
 a:hover { color: var(--text-strong); }
 
-/* Screen-reader only helper */
+/* Hidden but readable by screen readers */
 .sr-only {
     position: absolute !important;
     width: 1px; height: 1px;
@@ -783,13 +878,13 @@ a:hover { color: var(--text-strong); }
 .rect-card .card-more { max-height: 0; overflow: hidden; transition: max-height 320ms ease, opacity 260ms ease; opacity: 0; }
 .rect-card.open .card-more { max-height: 1000px; opacity: 1; }
 
-/* Make value cards and team members use rect-card look */
+/* Rectangular cards */
 .value-card { padding: 1rem; }
 .team-member { padding: 0; }
 .team-member .placeholder-img-circle { width: 100%; height: 140px; border-radius: 8px; margin-bottom: .75rem; background: #e6e9ec; }
 .team-member h3 { margin: 0 0 .25rem 0; }
 
-/* Card toggle (arrow + text) positioned bottom-right */
+/* Button to open/close card */
 .card-toggle {
     position: absolute;
     right: 12px;
@@ -1198,6 +1293,7 @@ footer {
     background: #1a2942;
     color: #fff;
     padding: 3rem 5%;
+    margin-top: auto; /* pushes footer to bottom when content is short */
 }
 
 .footer-content {
@@ -1342,10 +1438,13 @@ textarea {
 
 /* General responsive improvements for phones/tablets */
 @media (max-width: 900px) {
-    /* header: keep fixed on small screens too, but reduce padding so it fits */
-    /* On small screens don't let the fixed header overlap content: make it static and reduce body top padding.
-       This prevents pages where the layout expects additional top spacing from hiding the top of the content. */
-    .header { position: static; padding: 0.9rem 1rem; z-index: 1000; }
+    /* Header stays fixed - removed position: static to keep header sticky */
+    
+    /* Show hamburger on all small/medium screens */
+    .nav-toggle {
+        display: inline-flex !important;
+    }
+    
     .nav-links { flex-direction: column; gap: .5rem; margin-top: .75rem; }
     .nav-links a { display: inline-block; padding: .45rem .6rem; border-radius: 6px; }
 
@@ -1427,7 +1526,6 @@ textarea {
 }
 
 
-/* Respect users who prefer reduced motion */
 @media (prefers-reduced-motion: reduce) {
     .reveal { transition: none !important; transform: none !important; opacity: 1 !important; }
 }
@@ -1435,9 +1533,26 @@ textarea {
 /* Small phones: extra compacting */
 @media (max-width: 420px) {
     .nav-links { gap: .35rem; }
-    .logo { font-size: 1.25rem; }
+    .logo { font-size: 0.95rem; }
     .search-panel { padding: .75rem; }
     .mission-slide .placeholder-img { height: 110px; }
+    .header { padding: 0.65rem 0.75rem; }
+}
+
+/* Very small phones: make logo even smaller */
+@media (max-width: 360px) {
+    .logo { 
+        font-size: 0.85rem;
+        letter-spacing: 0.5px;
+    }
+    .header { 
+        padding: 0.6rem 0.65rem; 
+    }
+    .nav-toggle {
+        width: 40px;
+        height: 40px;
+        font-size: 22px;
+    }
 }
 
 /* Fluid typography and helpers */
@@ -1461,9 +1576,4 @@ iframe { max-width: 100%; }
 }
 .nav-toggle .bar { display:block; width:22px; height:2px; background:#fff; margin:3px 0; border-radius:2px; }
 
-@media (max-width: 900px) {
-    .nav-toggle { display: inline-flex; }
-    /* collapsed nav by default on small screens */
-    .nav-links { display: none; }
-    .nav-links.open { display: flex; flex-direction: column; gap: .5rem; }
-}
+/* Show hamburger on mobile - handled in @media (max-width: 768px) above */
